@@ -65,8 +65,8 @@
 		CE823D1F2738AA1F0012427D /* FreeFood */ = {
 			isa = PBXGroup;
 			children = (
-				CE823D332738AAA40012427D /* Model.swift */,
 				CE823D202738AA1F0012427D /* FreeFoodApp.swift */,
+				CE823D332738AAA40012427D /* Model.swift */,
 				CE823D222738AA1F0012427D /* ContentView.swift */,
 				CE823D372738B8D50012427D /* FindView.swift */,
 				CE823D352738AEF80012427D /* ActivityView.swift */,
