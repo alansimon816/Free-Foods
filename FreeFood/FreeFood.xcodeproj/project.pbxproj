@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA5018274309A30065E51A /* FoodSubmissionView.swift */; };
 		CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D202738AA1F0012427D /* FreeFoodApp.swift */; };
 		CE823D232738AA1F0012427D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D222738AA1F0012427D /* ContentView.swift */; };
 		CE823D252738AA240012427D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE823D242738AA240012427D /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92FA5018274309A30065E51A /* FoodSubmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSubmissionView.swift; sourceTree = "<group>"; };
 		CE823D1D2738AA1F0012427D /* FreeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE823D202738AA1F0012427D /* FreeFoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeFoodApp.swift; sourceTree = "<group>"; };
 		CE823D222738AA1F0012427D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				CE823D292738AA240012427D /* Persistence.swift */,
 				CE823D2B2738AA240012427D /* FreeFood.xcdatamodeld */,
 				CE823D262738AA240012427D /* Preview Content */,
+				92FA5018274309A30065E51A /* FoodSubmissionView.swift */,
 			);
 			path = FreeFood;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				CE823D382738B8D50012427D /* FindView.swift in Sources */,
 				CE823D3C2738B9390012427D /* LeaderboardView.swift in Sources */,
 				CE823D3A2738B9170012427D /* AccountView.swift in Sources */,
+				92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */,
 				CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */,
 				CE823D2D2738AA240012427D /* FreeFood.xcdatamodeld in Sources */,
 				CE823D362738AEF80012427D /* ActivityView.swift in Sources */,
