@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		924A80122745AEC100E6BF9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 924A80112745AEC100E6BF9C /* GoogleService-Info.plist */; };
+		9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9261E6A22745B6AD0099BE59 /* SignInModel.swift */; };
 		92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA5018274309A30065E51A /* FoodSubmissionView.swift */; };
+		C34106CD3BF8EA15A3CB4DFF /* Pods_FreeFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1DC5A00A7D2847C824380D /* Pods_FreeFood.framework */; };
 		CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D202738AA1F0012427D /* FreeFoodApp.swift */; };
 		CE823D232738AA1F0012427D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D222738AA1F0012427D /* ContentView.swift */; };
 		CE823D252738AA240012427D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE823D242738AA240012427D /* Assets.xcassets */; };
@@ -22,7 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D1DC5A00A7D2847C824380D /* Pods_FreeFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		924A80112745AEC100E6BF9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9261E6A22745B6AD0099BE59 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		92FA5018274309A30065E51A /* FoodSubmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSubmissionView.swift; sourceTree = "<group>"; };
+		C542F32A5345FAE68BDA39A8 /* Pods-FreeFood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeFood.debug.xcconfig"; path = "Target Support Files/Pods-FreeFood/Pods-FreeFood.debug.xcconfig"; sourceTree = "<group>"; };
 		CE823D1D2738AA1F0012427D /* FreeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE823D202738AA1F0012427D /* FreeFoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeFoodApp.swift; sourceTree = "<group>"; };
 		CE823D222738AA1F0012427D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +42,7 @@
 		CE823D372738B8D50012427D /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		CE823D392738B9170012427D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		CE823D3B2738B9390012427D /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		F6BA47438F43A76245B339B0 /* Pods-FreeFood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeFood.release.xcconfig"; path = "Target Support Files/Pods-FreeFood/Pods-FreeFood.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,17 +50,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C34106CD3BF8EA15A3CB4DFF /* Pods_FreeFood.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		704D59D547FDFC273DBADE88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D1DC5A00A7D2847C824380D /* Pods_FreeFood.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE823D142738AA1F0012427D = {
 			isa = PBXGroup;
 			children = (
 				CE823D1F2738AA1F0012427D /* FreeFood */,
 				CE823D1E2738AA1F0012427D /* Products */,
+				CF0C106E4634CF3FDF158380 /* Pods */,
+				704D59D547FDFC273DBADE88 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +88,7 @@
 			children = (
 				CE823D202738AA1F0012427D /* FreeFoodApp.swift */,
 				CE823D332738AAA40012427D /* Model.swift */,
+				9261E6A22745B6AD0099BE59 /* SignInModel.swift */,
 				CE823D222738AA1F0012427D /* ContentView.swift */,
 				CE823D372738B8D50012427D /* FindView.swift */,
 				CE823D352738AEF80012427D /* ActivityView.swift */,
@@ -79,6 +99,7 @@
 				CE823D2B2738AA240012427D /* FreeFood.xcdatamodeld */,
 				CE823D262738AA240012427D /* Preview Content */,
 				92FA5018274309A30065E51A /* FoodSubmissionView.swift */,
+				924A80112745AEC100E6BF9C /* GoogleService-Info.plist */,
 			);
 			path = FreeFood;
 			sourceTree = "<group>";
@@ -91,6 +112,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		CF0C106E4634CF3FDF158380 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C542F32A5345FAE68BDA39A8 /* Pods-FreeFood.debug.xcconfig */,
+				F6BA47438F43A76245B339B0 /* Pods-FreeFood.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -98,9 +128,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE823D302738AA240012427D /* Build configuration list for PBXNativeTarget "FreeFood" */;
 			buildPhases = (
+				3C457519B93A466EC47B706F /* [CP] Check Pods Manifest.lock */,
 				CE823D192738AA1F0012427D /* Sources */,
 				CE823D1A2738AA1F0012427D /* Frameworks */,
 				CE823D1B2738AA1F0012427D /* Resources */,
+				89DEE475E5C6629C8F1204F9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,16 +183,60 @@
 			files = (
 				CE823D282738AA240012427D /* Preview Assets.xcassets in Resources */,
 				CE823D252738AA240012427D /* Assets.xcassets in Resources */,
+				924A80122745AEC100E6BF9C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C457519B93A466EC47B706F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FreeFood-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89DEE475E5C6629C8F1204F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FreeFood/Pods-FreeFood-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FreeFood/Pods-FreeFood-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FreeFood/Pods-FreeFood-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE823D192738AA1F0012427D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */,
 				CE823D342738AAA40012427D /* Model.swift in Sources */,
 				CE823D2A2738AA240012427D /* Persistence.swift in Sources */,
 				CE823D232738AA1F0012427D /* ContentView.swift in Sources */,
@@ -295,6 +371,7 @@
 		};
 		CE823D312738AA240012427D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C542F32A5345FAE68BDA39A8 /* Pods-FreeFood.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -323,6 +400,7 @@
 		};
 		CE823D322738AA240012427D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6BA47438F43A76245B339B0 /* Pods-FreeFood.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

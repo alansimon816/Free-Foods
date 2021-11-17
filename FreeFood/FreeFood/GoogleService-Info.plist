@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>638185583048-cv87c7jbk6bmpoq5in6cnt0hndorpa6r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.638185583048-cv87c7jbk6bmpoq5in6cnt0hndorpa6r</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAPtTCIDNT4Zf2-UEFuMolPfxrYDQIz2P4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>638185583048</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.FreeFood</string>
+	<key>PROJECT_ID</key>
+	<string>freeeats-cmsc436</string>
+	<key>STORAGE_BUCKET</key>
+	<string>freeeats-cmsc436.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:638185583048:ios:fbdd2b35d87317dac310fd</string>
+</dict>
+</plist>

@@ -10,7 +10,16 @@ import SwiftUI
 
 // View for finding food
 struct FindView: View {
-    var body: some View {
-        Text("FindView")
+  var body: some View {
+    NavigationView {
+      VStack {
+        NavigationLink(destination: Text("Find View")) {
+          Text("FindView")
+        }
+        NavigationLink(destination: FoodSubmissionView()) {
+          Text("Submit Eats")
+        }
+      }
     }
+  }
 }
