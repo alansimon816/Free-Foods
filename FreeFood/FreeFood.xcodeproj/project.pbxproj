@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		924A80122745AEC100E6BF9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 924A80112745AEC100E6BF9C /* GoogleService-Info.plist */; };
 		9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9261E6A22745B6AD0099BE59 /* SignInModel.swift */; };
+		9273F7BA2746A3820057D5EB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F7B92746A3820057D5EB /* HomeView.swift */; };
 		92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA5018274309A30065E51A /* FoodSubmissionView.swift */; };
 		C34106CD3BF8EA15A3CB4DFF /* Pods_FreeFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1DC5A00A7D2847C824380D /* Pods_FreeFood.framework */; };
 		CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D202738AA1F0012427D /* FreeFoodApp.swift */; };
@@ -28,6 +29,8 @@
 		2D1DC5A00A7D2847C824380D /* Pods_FreeFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924A80112745AEC100E6BF9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9261E6A22745B6AD0099BE59 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
+		9261E6A42745D2040099BE59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9273F7B92746A3820057D5EB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		92FA5018274309A30065E51A /* FoodSubmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSubmissionView.swift; sourceTree = "<group>"; };
 		C542F32A5345FAE68BDA39A8 /* Pods-FreeFood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeFood.debug.xcconfig"; path = "Target Support Files/Pods-FreeFood/Pods-FreeFood.debug.xcconfig"; sourceTree = "<group>"; };
 		CE823D1D2738AA1F0012427D /* FreeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +89,7 @@
 		CE823D1F2738AA1F0012427D /* FreeFood */ = {
 			isa = PBXGroup;
 			children = (
+				9261E6A42745D2040099BE59 /* Info.plist */,
 				CE823D202738AA1F0012427D /* FreeFoodApp.swift */,
 				CE823D332738AAA40012427D /* Model.swift */,
 				9261E6A22745B6AD0099BE59 /* SignInModel.swift */,
@@ -100,6 +104,7 @@
 				CE823D262738AA240012427D /* Preview Content */,
 				92FA5018274309A30065E51A /* FoodSubmissionView.swift */,
 				924A80112745AEC100E6BF9C /* GoogleService-Info.plist */,
+				9273F7B92746A3820057D5EB /* HomeView.swift */,
 			);
 			path = FreeFood;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 				CE823D3A2738B9170012427D /* AccountView.swift in Sources */,
 				92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */,
 				CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */,
+				9273F7BA2746A3820057D5EB /* HomeView.swift in Sources */,
 				CE823D2D2738AA240012427D /* FreeFood.xcdatamodeld in Sources */,
 				CE823D362738AEF80012427D /* ActivityView.swift in Sources */,
 			);
@@ -375,14 +381,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FreeFood/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FreeFood/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Free Eats";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -404,14 +414,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FreeFood/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FreeFood/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Free Eats";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

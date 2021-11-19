@@ -1,11 +1,13 @@
 {
   "images" : [
     {
+      "filename" : "Free Eats Symbol (40 x 40 px).png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "Free Eats Symbol (60 x 60 px).png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
@@ -31,11 +33,13 @@
       "size" : "40x40"
     },
     {
+      "filename" : "Free Eats Symbol (120 x 120 px).png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
+      "filename" : "Free Eats Symbol (180 x 180 px).png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"

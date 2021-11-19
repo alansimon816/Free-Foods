@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-class AuthModel: ObservableObject {
+class SimpleAuthModel: ObservableObject {
   let auth = Auth.auth()
   @Published var signInSuccess: Bool
   @Published var signedIn: Bool
@@ -18,7 +18,7 @@ class AuthModel: ObservableObject {
     signInSuccess = false
   }
   
-  func signIn(email: String, password: String) -> Bool  {
+  func signIn(_ email: String, _ password: String) -> Bool  {
     auth.signIn(withEmail: email, password: password) { result, error in
       if result != nil && error == nil {
         self.signInSuccess = true
@@ -27,16 +27,17 @@ class AuthModel: ObservableObject {
     return signInSuccess
   }
   
-  func register(email: String, password: String) -> Bool {
+  func register(_ email: String, _ password: String, _ repass: String) -> Bool {
     var success: Bool = false
-    auth.createUser(withEmail: email, password: password) { result, error in
-      if result != nil && error == nil {
-        success = true
+    if password == repass {
+      auth.createUser(withEmail: email, password: password) { result, error in
+        if result != nil && error == nil {
+          success = true
+        }
       }
+      return success
+    } else {
+      return success
     }
-    return success
   }
-  
-  
-  
 }

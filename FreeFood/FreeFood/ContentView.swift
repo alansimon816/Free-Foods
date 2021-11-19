@@ -18,12 +18,13 @@ struct ContentView: View {
 
     var body: some View {
         // We should add system images for each of these tab items
-        TabView() {
-            FindView().tabItem {Text("Find")}
-            ActivityView().tabItem {Text("Activity")}
-            LeaderboardView().tabItem {Text("Leaderboard")}
-            AccountView().tabItem {Text("Account")}
-        }
+//        TabView() {
+//            FindView().tabItem {Text("Find")}
+//            ActivityView().tabItem {Text("Activity")}
+//            LeaderboardView().tabItem {Text("Leaderboard")}
+//            AccountView().tabItem {Text("Account")}
+//        }
+      HomeView()
     }
 }
 
