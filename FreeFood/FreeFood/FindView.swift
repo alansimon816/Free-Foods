@@ -20,6 +20,6 @@ struct FindView: View {
           Text("Submit Eats")
         }
       }
-    }
+    }.navigationBarHidden(true)
   }
 }

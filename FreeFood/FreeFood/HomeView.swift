@@ -21,8 +21,17 @@ struct HomeView: View {
           .frame(width: 300, height: 300)
           .clipShape(Circle())
           .padding(.bottom, 100)
-        NavigationLink(destination: SimpleLoginView(showSignUp), isActive: $showSignUp) {
+        NavigationLink(destination: SimpleLoginView(true), isActive: $showSignUp) {
           Text("Sign Up")
+            .foregroundColor(.white)
+            .background(
+              RoundedRectangle(cornerRadius: 10)
+                .frame(width: 200, height: 50)
+            )
+        }
+        .offset(x: 0, y: -50)
+        NavigationLink(destination: SimpleLoginView(false), isActive: $showSignIn) {
+          Text("Sign In")
             .foregroundColor(.white)
             .background(
               RoundedRectangle(cornerRadius: 10)
@@ -46,14 +55,18 @@ struct HomeView: View {
 //    }
 
 
-struct LoginView: View {
-  @State var loginVersion: Bool
-  init(version: Bool) {
-    loginVersion = version
-  }
-  
+
+
+struct LogOutButton: View {
+  @EnvironmentObject var simpleAuth: SimpleAuthModel
   var body: some View {
-    Text("")
+    
+    NavigationLink(destination: HomeView().navigationBarHidden(true)) {
+      Text("Sign Out")
+    }.simultaneousGesture(TapGesture().onEnded {
+      simpleAuth.signOut()
+    })
+    
   }
 }
 
@@ -64,7 +77,8 @@ struct SimpleLoginView: View {
   @State private var repass = ""
   @State private var isSecured = true
   @State private var isConfirmedSecured = true
-  @State var isSignUp = true
+  @State var isSignUp: Bool
+  @State private var loginFailed = false
   
   init(_ showUp: Bool) {
     isSignUp = showUp
@@ -73,6 +87,8 @@ struct SimpleLoginView: View {
   var body: some View {
     VStack {
       TextField("Email", text: self.$email)
+        .textContentType(.emailAddress)
+        .keyboardType(.emailAddress)
         .autocapitalization(.none)
         .textFieldStyle(.roundedBorder)
       VStack {
@@ -124,23 +140,18 @@ struct SimpleLoginView: View {
       }
       .autocapitalization(.none)
       .textFieldStyle(.roundedBorder)
-      Button(action: {
-        if isSignUp {
-          simpleAuth.register(email, password, repass)
-        } else {
-          simpleAuth.signIn(email, password)
-        }
-      }){
+      .disableAutocorrection(true)
+      NavigationLink(destination: AppView()) {
         Text("Submit")
-          .foregroundColor(.white)
-          .background(
-            RoundedRectangle(cornerRadius: 10)
-              .frame(width: 100, height: 50)
-          )
-      }.padding(.top, 20)
+      }.simultaneousGesture(TapGesture().onEnded {
+        if isSignUp {
+          loginFailed = simpleAuth.register(email, password, repass)
+        } else {
+          loginFailed = simpleAuth.signIn(email, password)
+        }
+      })
     }
     .frame(width: 300, height: 300)
-    .navigationBarHidden(true)
   }
 }
 

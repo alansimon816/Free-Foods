@@ -10,14 +10,13 @@
 		924A80122745AEC100E6BF9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 924A80112745AEC100E6BF9C /* GoogleService-Info.plist */; };
 		9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9261E6A22745B6AD0099BE59 /* SignInModel.swift */; };
 		9273F7BA2746A3820057D5EB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F7B92746A3820057D5EB /* HomeView.swift */; };
+		9273F7BC274831600057D5EB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F7BB274831600057D5EB /* AppView.swift */; };
 		92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA5018274309A30065E51A /* FoodSubmissionView.swift */; };
 		C34106CD3BF8EA15A3CB4DFF /* Pods_FreeFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1DC5A00A7D2847C824380D /* Pods_FreeFood.framework */; };
 		CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D202738AA1F0012427D /* FreeFoodApp.swift */; };
 		CE823D232738AA1F0012427D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D222738AA1F0012427D /* ContentView.swift */; };
 		CE823D252738AA240012427D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE823D242738AA240012427D /* Assets.xcassets */; };
 		CE823D282738AA240012427D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE823D272738AA240012427D /* Preview Assets.xcassets */; };
-		CE823D2A2738AA240012427D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D292738AA240012427D /* Persistence.swift */; };
-		CE823D2D2738AA240012427D /* FreeFood.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE823D2B2738AA240012427D /* FreeFood.xcdatamodeld */; };
 		CE823D342738AAA40012427D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D332738AAA40012427D /* Model.swift */; };
 		CE823D362738AEF80012427D /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D352738AEF80012427D /* ActivityView.swift */; };
 		CE823D382738B8D50012427D /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D372738B8D50012427D /* FindView.swift */; };
@@ -29,8 +28,8 @@
 		2D1DC5A00A7D2847C824380D /* Pods_FreeFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924A80112745AEC100E6BF9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9261E6A22745B6AD0099BE59 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
-		9261E6A42745D2040099BE59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9273F7B92746A3820057D5EB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9273F7BB274831600057D5EB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		92FA5018274309A30065E51A /* FoodSubmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSubmissionView.swift; sourceTree = "<group>"; };
 		C542F32A5345FAE68BDA39A8 /* Pods-FreeFood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeFood.debug.xcconfig"; path = "Target Support Files/Pods-FreeFood/Pods-FreeFood.debug.xcconfig"; sourceTree = "<group>"; };
 		CE823D1D2738AA1F0012427D /* FreeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,8 +37,6 @@
 		CE823D222738AA1F0012427D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE823D242738AA240012427D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE823D272738AA240012427D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CE823D292738AA240012427D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		CE823D2C2738AA240012427D /* FreeFood.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FreeFood.xcdatamodel; sourceTree = "<group>"; };
 		CE823D332738AAA40012427D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CE823D352738AEF80012427D /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		CE823D372738B8D50012427D /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
@@ -89,7 +86,7 @@
 		CE823D1F2738AA1F0012427D /* FreeFood */ = {
 			isa = PBXGroup;
 			children = (
-				9261E6A42745D2040099BE59 /* Info.plist */,
+				924A80112745AEC100E6BF9C /* GoogleService-Info.plist */,
 				CE823D202738AA1F0012427D /* FreeFoodApp.swift */,
 				CE823D332738AAA40012427D /* Model.swift */,
 				9261E6A22745B6AD0099BE59 /* SignInModel.swift */,
@@ -99,12 +96,10 @@
 				CE823D3B2738B9390012427D /* LeaderboardView.swift */,
 				CE823D392738B9170012427D /* AccountView.swift */,
 				CE823D242738AA240012427D /* Assets.xcassets */,
-				CE823D292738AA240012427D /* Persistence.swift */,
-				CE823D2B2738AA240012427D /* FreeFood.xcdatamodeld */,
 				CE823D262738AA240012427D /* Preview Content */,
 				92FA5018274309A30065E51A /* FoodSubmissionView.swift */,
-				924A80112745AEC100E6BF9C /* GoogleService-Info.plist */,
 				9273F7B92746A3820057D5EB /* HomeView.swift */,
+				9273F7BB274831600057D5EB /* AppView.swift */,
 			);
 			path = FreeFood;
 			sourceTree = "<group>";
@@ -243,15 +238,14 @@
 			files = (
 				9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */,
 				CE823D342738AAA40012427D /* Model.swift in Sources */,
-				CE823D2A2738AA240012427D /* Persistence.swift in Sources */,
 				CE823D232738AA1F0012427D /* ContentView.swift in Sources */,
 				CE823D382738B8D50012427D /* FindView.swift in Sources */,
+				9273F7BC274831600057D5EB /* AppView.swift in Sources */,
 				CE823D3C2738B9390012427D /* LeaderboardView.swift in Sources */,
 				CE823D3A2738B9170012427D /* AccountView.swift in Sources */,
 				92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */,
 				CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */,
 				9273F7BA2746A3820057D5EB /* HomeView.swift in Sources */,
-				CE823D2D2738AA240012427D /* FreeFood.xcdatamodeld in Sources */,
 				CE823D362738AEF80012427D /* ActivityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,7 +398,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -437,7 +431,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -463,19 +457,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		CE823D2B2738AA240012427D /* FreeFood.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CE823D2C2738AA240012427D /* FreeFood.xcdatamodel */,
-			);
-			currentVersion = CE823D2C2738AA240012427D /* FreeFood.xcdatamodel */;
-			path = FreeFood.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = CE823D152738AA1F0012427D /* Project object */;
 }

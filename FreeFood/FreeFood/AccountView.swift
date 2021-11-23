@@ -10,8 +10,7 @@ import SwiftUI
 
 // User's account settings
 struct AccountView: View {
-    
     var body: some View {
-        Text("AccountView")
+        LogOutButton()
     }
 }
