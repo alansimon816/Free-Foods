@@ -13,8 +13,8 @@ struct FindView: View {
   var body: some View {
     NavigationView {
       VStack {
-        NavigationLink(destination: Text("Find View")) {
-          Text("FindView")
+        NavigationLink(destination: Text("Find Map")) {
+          Text("Find Map")
         }
         NavigationLink(destination: FoodSubmissionView()) {
           Text("Submit Eats")

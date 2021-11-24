@@ -10,6 +10,13 @@ import SwiftUI
 struct AppView: View {
   // This view is after a successful login
   var body: some View {
+    LaunchView()
+  }
+}
+
+struct LaunchView: View {
+  
+  var body: some View {
     // We should add system images for each of these tab items
     TabView() {
       FindView()

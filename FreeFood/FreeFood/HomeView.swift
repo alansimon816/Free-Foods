@@ -42,20 +42,6 @@ struct HomeView: View {
     }
   }
 }
-//        Button(action: {
-//          print("Hello")
-//        }) {
-//          ZStack {
-//            RoundedRectangle(cornerRadius: 10)
-//            Text("Sign In")
-//              .foregroundColor(.white)
-//          }
-//        }.frame(width: 200, height: 50, alignment: .center)
-//      }.padding(.top, 50)
-//    }
-
-
-
 
 struct LogOutButton: View {
   @EnvironmentObject var simpleAuth: SimpleAuthModel
@@ -77,8 +63,9 @@ struct SimpleLoginView: View {
   @State private var repass = ""
   @State private var isSecured = true
   @State private var isConfirmedSecured = true
+  @State private var errorInfo: AuthErrorInfo?
+  @State private var loginSuccess = false
   @State var isSignUp: Bool
-  @State private var loginFailed = false
   
   init(_ showUp: Bool) {
     isSignUp = showUp
@@ -141,18 +128,74 @@ struct SimpleLoginView: View {
       .autocapitalization(.none)
       .textFieldStyle(.roundedBorder)
       .disableAutocorrection(true)
-      NavigationLink(destination: AppView()) {
+      NavigationLink(destination: AppView(), isActive: $loginSuccess) {
         Text("Submit")
       }.simultaneousGesture(TapGesture().onEnded {
         if isSignUp {
-          loginFailed = simpleAuth.register(email, password, repass)
+          if password.count > 6 {
+            if password == repass {
+              loginSuccess = simpleAuth.register(email, password)
+            } else {
+              errorInfo = AuthErrorInfo(id: .passwordMismatch,
+                                        title: "Unable to Login",
+                                        message:
+                                          """
+                                          The passwords did not match.
+                                          Please try again.
+                                          """)
+
+            }
+          } else {
+            errorInfo = AuthErrorInfo(id: .passwordTooShort,
+                                      title: "Unable to Sign Up",
+                                      message:
+                                        """
+                                        The password entered was too short.
+                                        Passwords must be 6 characters or longer.
+                                        Please try again.
+                                        """)
+          }
         } else {
-          loginFailed = simpleAuth.signIn(email, password)
+          loginSuccess = simpleAuth.signIn(email, password)
+          if !loginSuccess {
+            errorInfo = AuthErrorInfo(id: .accountMismatch,
+                                      title: "Unable to Login",
+                                      message:
+                                        """
+                                        An account may not be associated with this email.
+                                        Or the password entered was incorrect.
+                                        Please try again.
+                                        """)
+          }
         }
+      }).alert(item: $errorInfo, content: { errorInfo in
+        Alert(title: Text(errorInfo.title),
+              message: Text(errorInfo.message),
+              dismissButton: .default(Text("Close"), action: {
+                if isSignUp {
+                  email = ""
+                  password = ""
+                  repass = ""
+                } else {
+                  password = ""
+                }
+        }))
       })
     }
     .frame(width: 300, height: 300)
   }
+}
+
+struct AuthErrorInfo: Identifiable {
+  enum AuthErrorType {
+    case passwordMismatch
+    case passwordTooShort
+    case accountMismatch
+  }
+  
+  let id: AuthErrorType
+  let title: String
+  let message: String
 }
 
 struct HomeView_Previews: PreviewProvider {
