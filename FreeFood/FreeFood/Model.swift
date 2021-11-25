@@ -43,18 +43,18 @@ class User: Identifiable {
 }
 
 enum Food: String, CaseIterable {
-    case american = "american"
-    case asian = "asian"
-    case mediterranean = "mediterranean"
-    case mexican = "mexican"
-    case italian = "italian"
-    case desserts = "desserts"
-    case lunch = "lunch"
-    case breakfast = "breakfast"
-    case snacks = "snacks"
-    case vegan = "vegan"
-    case vegetarian = "vegetarian"
-    case keto = "keto"
+    case american = "American"
+    case asian = "Asian"
+    case mediterranean = "Mediterranean"
+    case mexican = "Mexican"
+    case italian = "Italian"
+    case desserts = "Desserts"
+    case lunch = "Lunch"
+    case breakfast = "Breakfast"
+    case snacks = "Snacks"
+    case vegan = "Vegan"
+    case vegetarian = "Vegetarian"
+    case keto = "Keto"
 }
 
 func getFoods() -> [String] {
