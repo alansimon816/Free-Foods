@@ -8,5 +8,6 @@ target 'FreeFood' do
   # Pods for FreeFood
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
-
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift' # Swift extensions
 end
