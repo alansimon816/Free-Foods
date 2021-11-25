@@ -49,8 +49,6 @@ enum Food: String, CaseIterable {
     case mexican = "Mexican"
     case italian = "Italian"
     case desserts = "Desserts"
-    case lunch = "Lunch"
-    case breakfast = "Breakfast"
     case snacks = "Snacks"
     case vegan = "Vegan"
     case vegetarian = "Vegetarian"
