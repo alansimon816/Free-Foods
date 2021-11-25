@@ -41,3 +41,28 @@ class User: Identifiable {
         self.dob = "\(dob[0])\\\(dob[1])\\\(dob[2])"
     }
 }
+
+enum Food: String, CaseIterable {
+    case american = "american"
+    case asian = "asian"
+    case mediterranean = "mediterranean"
+    case mexican = "mexican"
+    case italian = "italian"
+    case desserts = "desserts"
+    case lunch = "lunch"
+    case breakfast = "breakfast"
+    case snacks = "snacks"
+    case vegan = "vegan"
+    case vegetarian = "vegetarian"
+    case keto = "keto"
+}
+
+func getFoods() -> [String] {
+    var foods: [String] = []
+    
+    for food in Food.allCases {
+        foods += [food.rawValue]
+    }
+    
+    return foods
+}
