@@ -22,6 +22,7 @@
 		CE823D382738B8D50012427D /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D372738B8D50012427D /* FindView.swift */; };
 		CE823D3A2738B9170012427D /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D392738B9170012427D /* AccountView.swift */; };
 		CE823D3C2738B9390012427D /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D3B2738B9390012427D /* LeaderboardView.swift */; };
+		CE823D40274F1A990012427D /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D3F274F1A990012427D /* RegistrationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		CE823D372738B8D50012427D /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		CE823D392738B9170012427D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		CE823D3B2738B9390012427D /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		CE823D3F274F1A990012427D /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		F6BA47438F43A76245B339B0 /* Pods-FreeFood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeFood.release.xcconfig"; path = "Target Support Files/Pods-FreeFood/Pods-FreeFood.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 				92FA5018274309A30065E51A /* FoodSubmissionView.swift */,
 				9273F7B92746A3820057D5EB /* HomeView.swift */,
 				9273F7BB274831600057D5EB /* AppView.swift */,
+				CE823D3F274F1A990012427D /* RegistrationView.swift */,
 			);
 			path = FreeFood;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */,
 				CE823D342738AAA40012427D /* Model.swift in Sources */,
 				CE823D232738AA1F0012427D /* ContentView.swift in Sources */,
+				CE823D40274F1A990012427D /* RegistrationView.swift in Sources */,
 				CE823D382738B8D50012427D /* FindView.swift in Sources */,
 				9273F7BC274831600057D5EB /* AppView.swift in Sources */,
 				CE823D3C2738B9390012427D /* LeaderboardView.swift in Sources */,
