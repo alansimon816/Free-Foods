@@ -64,5 +64,5 @@ func getFoods() -> [String] {
         foods += [food.rawValue]
     }
     
-    return foods
+    return foods.sorted()
 }
