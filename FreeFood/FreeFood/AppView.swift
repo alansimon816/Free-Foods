@@ -8,33 +8,48 @@
 import SwiftUI
 
 struct AppView: View {
+    var recentRegister: Bool
+    
+    init(_ recentRegister: Bool) {
+        self.recentRegister = recentRegister
+    }
   // This view is after a successful login
   var body: some View {
-    LaunchView()
+    LaunchView(recentRegister)
   }
 }
 
 struct LaunchView: View {
+    var recentRegister: Bool
+    init(_ recentRegister: Bool) {
+        self.recentRegister = recentRegister
+    }
   
   var body: some View {
     // We should add system images for each of these tab items
-    TabView() {
-      FindView()
-        .tabItem {Text("Find")}
-      ActivityView()
-        .tabItem {Text("Activity")}
-      LeaderboardView()
-        .navigationBarHidden(true)
-        .tabItem {Text("Leaderboard")}
-      AccountView()
-        .navigationBarHidden(true)
-        .tabItem {Text("Account")}
-    }
+      NavigationView {
+          if recentRegister {
+              RegistrationView()
+          } else {
+              TabView() {
+                FindView()
+                  .tabItem {Text("Find")}
+                ActivityView()
+                  .tabItem {Text("Activity")}
+                LeaderboardView()
+                  .navigationBarHidden(true)
+                  .tabItem {Text("Leaderboard")}
+                AccountView()
+                  .navigationBarHidden(true)
+                  .tabItem {Text("Account")}
+              }
+          }
+      }.navigationBarBackButtonHidden(true)
   }
 }
 
 struct AppView_Previews: PreviewProvider {
   static var previews: some View {
-    AppView()
+      AppView(false)
   }
 }

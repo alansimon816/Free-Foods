@@ -65,6 +65,7 @@ struct SimpleLoginView: View {
   @State private var isConfirmedSecured = true
   @State private var errorInfo: AuthErrorInfo?
   @State private var loginSuccess = false
+  @State private var isRecentRegister = false
   @State var isSignUp: Bool
   
   init(_ showUp: Bool) {
@@ -128,13 +129,14 @@ struct SimpleLoginView: View {
       .autocapitalization(.none)
       .textFieldStyle(.roundedBorder)
       .disableAutocorrection(true)
-      NavigationLink(destination: AppView(), isActive: $loginSuccess) {
+      NavigationLink(destination: AppView(isRecentRegister), isActive: $loginSuccess) {
         Text("Submit")
       }.simultaneousGesture(TapGesture().onEnded {
         if isSignUp {
           if password.count > 6 {
             if password == repass {
               loginSuccess = simpleAuth.register(email, password)
+              isRecentRegister = true
             } else {
               errorInfo = AuthErrorInfo(id: .passwordMismatch,
                                         title: "Unable to Login",

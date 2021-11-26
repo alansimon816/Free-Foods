@@ -11,8 +11,9 @@ import CoreData
 struct ContentView: View {
   @EnvironmentObject var simpleAuth: SimpleAuthModel
   var body: some View {
+//    RegistrationView()
     if simpleAuth.signedIn {
-      AppView()
+        AppView(simpleAuth.recentlyRegistered)
     } else {
       HomeView()
     }

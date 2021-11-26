@@ -12,6 +12,7 @@ class SimpleAuthModel: ObservableObject {
   let auth = Auth.auth()
   private var authListener: AuthStateDidChangeListenerHandle?
   @Published var signedIn: Bool
+  @Published var recentlyRegistered = false
   
   init() {
     signedIn = false
@@ -49,14 +50,26 @@ class SimpleAuthModel: ObservableObject {
         if let error = error, user == nil {
           print(error.localizedDescription)
         } else {
-          success = true
+            success = true
+            self.recentlyRegistered = true
+            if !self.signIn(email, password) {
+                print("<DEBUG> Unsuccessful sign in after successful sign up")
+            }
         }
       }
     }
     return success
   }
+
+    func expireRecentlyRegistered() -> Void {
+        self.recentlyRegistered = false
+    }
   
   func signOut() {
+      if recentlyRegistered {
+          // Ensures RegistrationView wont appear again; user has already gone through that workflow
+          recentlyRegistered = false
+      }
     try? auth.signOut()
   }
 }
