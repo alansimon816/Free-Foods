@@ -66,7 +66,7 @@ class SimpleAuthModel: ObservableObject {
     }
   
   func signOut() {
-      if recentlyRegistered {
+    if recentlyRegistered {
           // Ensures RegistrationView wont appear again; user has already gone through that workflow
           recentlyRegistered = false
       }

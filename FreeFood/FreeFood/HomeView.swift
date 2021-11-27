@@ -129,7 +129,7 @@ struct SimpleLoginView: View {
       .autocapitalization(.none)
       .textFieldStyle(.roundedBorder)
       .disableAutocorrection(true)
-      NavigationLink(destination: AppView(isRecentRegister), isActive: $loginSuccess) {
+      NavigationLink(destination: AppView(recentRegister: isRecentRegister), isActive: $loginSuccess) {
         Text("Submit")
       }.simultaneousGesture(TapGesture().onEnded {
         if isSignUp {

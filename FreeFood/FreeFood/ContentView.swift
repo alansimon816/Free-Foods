@@ -13,7 +13,7 @@ struct ContentView: View {
   var body: some View {
 //    RegistrationView()
     if simpleAuth.signedIn {
-        AppView(simpleAuth.recentlyRegistered)
+      AppView(recentRegister: simpleAuth.recentlyRegistered)
     } else {
       HomeView()
     }

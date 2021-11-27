@@ -30,7 +30,7 @@ struct RegistrationView: View {
                       SelectMultipleList(selectedFoods: self.$selectedFoods)
                 }
                 Section() {
-                    NavigationLink(destination: AppView(false)) {
+                  NavigationLink(destination: AppView(recentRegister: false)) {
                         Text("Submit")
                     }.simultaneousGesture(TapGesture().onEnded {
                         storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
