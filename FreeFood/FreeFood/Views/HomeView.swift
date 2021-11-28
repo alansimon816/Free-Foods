@@ -104,7 +104,7 @@ struct SimpleRegisterView: View {
     }.autocapitalization(.none)
       .textFieldStyle(.roundedBorder)
       .disableAutocorrection(true)
-    NavigationLink(destination: AppView(true), isActive: $isRegistered) {
+      NavigationLink(destination: AppView(recentRegister: true), isActive: $isRegistered) {
       Text("Submit")
     }.simultaneousGesture(TapGesture().onEnded {
       if password.count > 6 {
@@ -123,7 +123,6 @@ struct SimpleRegisterView: View {
                 print("<DEBUG> Sign up successful")
                 print()
                 isRegistered = true
-                isRecentRegister = true
             }
           }
         } else {
