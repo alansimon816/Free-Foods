@@ -110,6 +110,7 @@ struct SimpleRegisterView: View {
       .autocapitalization(.none)
       .textFieldStyle(.roundedBorder)
       .disableAutocorrection(true)
+<<<<<<< HEAD:FreeFood/FreeFood/HomeView.swift
       .frame(width: 300, height: 200, alignment: .center)
       VStack {
         NavigationLink(destination: LaunchView(recentRegister: false), isActive: $isRegistered) {
@@ -137,6 +138,32 @@ struct SimpleRegisterView: View {
             } else {
               errorInfo = AuthErrorInfo(id: .passwordMismatch,
                                         message:
+=======
+      NavigationLink(destination: AppView(recentRegister: true), isActive: $isRegistered) {
+      Text("Submit")
+    }.simultaneousGesture(TapGesture().onEnded {
+      if password.count > 6 {
+        if password == repass {
+          sam.register(email, password) { result in
+            switch result {
+              case .failure(let error):
+                errorInfo = AuthErrorInfo(id: .otherError,
+                                          message: error.localizedDescription)
+                
+                print("<DEBUG> Sign up unsuccessful")
+                print(error.localizedDescription)
+                print()
+                didError = true
+              case .success(_ ):
+                print("<DEBUG> Sign up successful")
+                print()
+                isRegistered = true
+            }
+          }
+        } else {
+          errorInfo = AuthErrorInfo(id: .passwordMismatch,
+                                    message:
+>>>>>>> 3f5312d766423d4575ff3d2b9378a2a6365dab00:FreeFood/FreeFood/Views/HomeView.swift
                                             """
                                             The passwords did not match.
                                             Please try again.
