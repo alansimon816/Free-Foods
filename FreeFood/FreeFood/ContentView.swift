@@ -9,10 +9,9 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-  @EnvironmentObject var sam: SimpleAuthModel
   var body: some View {
-//    RegistrationView()
     HomeView()
+      .frame(width: 400, height: 600, alignment: .center)
   }
 }
 

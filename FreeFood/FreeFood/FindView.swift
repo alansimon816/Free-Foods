@@ -11,15 +11,19 @@ import SwiftUI
 // View for finding food
 struct FindView: View {
   var body: some View {
-    NavigationView {
-      VStack {
-        NavigationLink(destination: Text("Find Map")) {
-          Text("Find Map")
-        }
-        NavigationLink(destination: FoodSubmissionView()) {
-          Text("Submit Eats")
-        }
+    VStack {
+      NavigationLink(destination: Text("Find Map")) {
+        Text("Find Map")
       }
-    }.navigationBarHidden(true)
+      NavigationLink(destination: FoodSubmissionView()) {
+        Text("Submit Eats")
+      }
+    }
+  }
+}
+
+struct FindView_Previews: PreviewProvider {
+  static var previews: some View {
+    FindView()
   }
 }

@@ -40,7 +40,6 @@ class SimpleAuthModel: ObservableObject {
   }
   
   func register(_ email: String, _ password: String, callback: @escaping(Result<Bool, Error>) -> ()) {
-    
     if userState == .signedOut || userState == .undefined {
       auth.createUser(withEmail: email, password: password) { user, error in
         if let err = error {
