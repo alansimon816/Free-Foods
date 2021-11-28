@@ -10,66 +10,64 @@ import FirebaseAuth
 
 class SimpleAuthModel: ObservableObject {
   let auth = Auth.auth()
-  private var authListener: AuthStateDidChangeListenerHandle?
-  @Published var signedIn: Bool
+  var userStatusListenerHandle: AuthStateDidChangeListenerHandle?
+  enum userStatus {
+    case undefined, signedIn, signedOut
+  }
+  @Published var userState: userStatus = .undefined
   @Published var recentlyRegistered = false
   
-  init() {
-    signedIn = false
-  }
-  
-  func checkSignStatus() -> Bool {
-    authListener = auth.addStateDidChangeListener { (auth, user) in
-      if user != nil {
-        self.signedIn = true
-      } else {
-        self.signedIn = false
+  func didUserStatusChange() {
+    userStatusListenerHandle = auth.addStateDidChangeListener({ (_, user) in
+      guard user != nil else {
+        self.userState = .signedOut
+        return
       }
-    }
-    return signedIn
+      self.userState = .signedIn
+    })
   }
   
-  func signIn(_ email: String, _ password: String) -> Bool  {
-    var signInSuccess: Bool = false
-    if checkSignStatus() == false {
-      auth.signIn(withEmail: email, password: password) { user, error in
-        if let error = error, user == nil {
-          print(error.localizedDescription)
+  func signIn(_ email: String, _ password: String, callback: @escaping (Result<Bool, Error>) -> ()) {
+    if userState == .signedOut || userState == .undefined {
+      auth.signIn(withEmail: email, password: password) { (user, error) in
+        if let err = error {
+          callback(.failure(err))
         } else {
-          signInSuccess = true
+          callback(.success(true))
         }
       }
     }
-    return signInSuccess
   }
   
-  func register(_ email: String, _ password: String) -> Bool {
-    var success: Bool = false
-    if checkSignStatus() == false {
+  func register(_ email: String, _ password: String, callback: @escaping(Result<Bool, Error>) -> ()) {
+    
+    if userState == .signedOut || userState == .undefined {
       auth.createUser(withEmail: email, password: password) { user, error in
-        if let error = error, user == nil {
-          print(error.localizedDescription)
+        if let err = error {
+          callback(.failure(err))
         } else {
-            success = true
-            self.recentlyRegistered = true
-            if !self.signIn(email, password) {
-                print("<DEBUG> Unsuccessful sign in after successful sign up")
-            }
+          self.recentlyRegistered = true
+          callback(.success(true))
+          
+          // Not sure if this works because signIn can't happen when a user has already signed up
+          //          if !self.signIn(email, password) {
+          //              print("<DEBUG> Unsuccessful sign in after successful sign up")
+          //          }
         }
       }
     }
-    return success
   }
-
-    func expireRecentlyRegistered() -> Void {
-        self.recentlyRegistered = false
-    }
+  
+  func expireRecentlyRegistered() -> Void {
+    self.recentlyRegistered = false
+  }
   
   func signOut() {
     if recentlyRegistered {
-          // Ensures RegistrationView wont appear again; user has already gone through that workflow
-          recentlyRegistered = false
-      }
+      // Ensures RegistrationView wont appear again; user has already gone through that workflow
+      recentlyRegistered = false
+    }
     try? auth.signOut()
   }
 }
+ 

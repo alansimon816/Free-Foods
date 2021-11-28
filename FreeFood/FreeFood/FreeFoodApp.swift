@@ -7,12 +7,11 @@
 
 import SwiftUI
 import Firebase
-import FirebaseFirestore
 
 @main
 struct FreeFoodApp: App {
   @StateObject var model = Model()
-  @StateObject var simpleAuth = SimpleAuthModel()
+  @StateObject var sam = SimpleAuthModel()
   
   init() {
     FirebaseApp.configure()
@@ -21,7 +20,7 @@ struct FreeFoodApp: App {
   var body: some Scene {
     WindowGroup {
       ContentView()
-        .environmentObject(simpleAuth)
+        .environmentObject(sam)
         .environmentObject(model)
     }
   }

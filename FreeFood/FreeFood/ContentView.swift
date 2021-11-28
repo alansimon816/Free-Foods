@@ -9,14 +9,10 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-  @EnvironmentObject var simpleAuth: SimpleAuthModel
+  @EnvironmentObject var sam: SimpleAuthModel
   var body: some View {
 //    RegistrationView()
-    if simpleAuth.signedIn {
-      AppView(recentRegister: simpleAuth.recentlyRegistered)
-    } else {
-      HomeView()
-    }
+    HomeView()
   }
 }
 
