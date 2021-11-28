@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct FoodSubmissionView: View {
   @State var loc = ""
@@ -40,7 +41,9 @@ struct FoodSubmissionView: View {
         }
         
         Section() {
-          Button("Submit") {}
+          Button("Submit") {
+              storeFoodSubmission(building: loc, roomNum: roomNum, foodType: foodType, quantity: foodSizeOptions[sizeIndex], additionalInfo: infoText)
+          }
           Button("Cancel") {}
         }
       }.navigationBarTitle(Text("Food Submission"))
@@ -52,4 +55,36 @@ struct FoodSubmissionView_Previews: PreviewProvider {
   static var previews: some View {
     FoodSubmissionView()
   }
+}
+
+func storeFoodSubmission(building: String, roomNum: String, foodType: String, quantity: String, additionalInfo: String)  {
+    let sam = SimpleAuthModel()
+    let db = Firestore.firestore()
+    var UID = ""
+    // Add a new document with a generated ID
+    var ref: DocumentReference? = nil
+    
+    if let user = sam.auth.currentUser {
+        //User is signed in
+        UID = user.uid
+    } else {
+        //No user is signed in
+        print("<DEBUG> No user is currently signed in")
+    }
+    
+    ref = db.collection("Food Submissions").addDocument(data: [
+        "Building": building,
+        "Room #": roomNum,
+        "Food Type": foodType,
+        "Quantity:": quantity,
+        "Additional Info": additionalInfo,
+        "UID": UID])
+        { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+
 }
