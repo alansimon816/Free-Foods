@@ -15,6 +15,10 @@
 		C34106CD3BF8EA15A3CB4DFF /* Pods_FreeFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1DC5A00A7D2847C824380D /* Pods_FreeFood.framework */; };
 		CE3183332752F4F1008BBC6A /* LocationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3183312752F4F1008BBC6A /* LocationRequestView.swift */; };
 		CE3183342752F4F1008BBC6A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3183322752F4F1008BBC6A /* LocationManager.swift */; };
+		CE5AFF8A2754224100DC5E65 /* FoodEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFF892754224000DC5E65 /* FoodEventModel.swift */; };
+		CE5AFF8D2754226D00DC5E65 /* FoodEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFF8C2754226D00DC5E65 /* FoodEventViewModel.swift */; };
+		CE5AFF8F2754234A00DC5E65 /* FoodFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFF8E2754234A00DC5E65 /* FoodFeedView.swift */; };
+		CE5AFF912754237B00DC5E65 /* FoodFeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFF902754237B00DC5E65 /* FoodFeedItemView.swift */; };
 		CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D202738AA1F0012427D /* FreeFoodApp.swift */; };
 		CE823D232738AA1F0012427D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D222738AA1F0012427D /* ContentView.swift */; };
 		CE823D252738AA240012427D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE823D242738AA240012427D /* Assets.xcassets */; };
@@ -37,6 +41,10 @@
 		C542F32A5345FAE68BDA39A8 /* Pods-FreeFood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeFood.debug.xcconfig"; path = "Target Support Files/Pods-FreeFood/Pods-FreeFood.debug.xcconfig"; sourceTree = "<group>"; };
 		CE3183312752F4F1008BBC6A /* LocationRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
 		CE3183322752F4F1008BBC6A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		CE5AFF892754224000DC5E65 /* FoodEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventModel.swift; sourceTree = "<group>"; };
+		CE5AFF8C2754226D00DC5E65 /* FoodEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventViewModel.swift; sourceTree = "<group>"; };
+		CE5AFF8E2754234A00DC5E65 /* FoodFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFeedView.swift; sourceTree = "<group>"; };
+		CE5AFF902754237B00DC5E65 /* FoodFeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFeedItemView.swift; sourceTree = "<group>"; };
 		CE823D1D2738AA1F0012427D /* FreeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE823D202738AA1F0012427D /* FreeFoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeFoodApp.swift; sourceTree = "<group>"; };
 		CE823D222738AA1F0012427D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +79,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE5AFF8727541F6100DC5E65 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE3183322752F4F1008BBC6A /* LocationManager.swift */,
+				CE823D332738AAA40012427D /* Model.swift */,
+				9261E6A22745B6AD0099BE59 /* SignInModel.swift */,
+				CE5AFF892754224000DC5E65 /* FoodEventModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE5AFF8827541F8200DC5E65 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE3183312752F4F1008BBC6A /* LocationRequestView.swift */,
+				CE823D222738AA1F0012427D /* ContentView.swift */,
+				CE823D372738B8D50012427D /* FindView.swift */,
+				CE823D352738AEF80012427D /* ActivityView.swift */,
+				CE823D3B2738B9390012427D /* LeaderboardView.swift */,
+				CE823D392738B9170012427D /* AccountView.swift */,
+				92FA5018274309A30065E51A /* FoodSubmissionView.swift */,
+				9273F7B92746A3820057D5EB /* HomeView.swift */,
+				9273F7BB274831600057D5EB /* AppView.swift */,
+				CE823D3F274F1A990012427D /* RegistrationView.swift */,
+				CE5AFF8E2754234A00DC5E65 /* FoodFeedView.swift */,
+				CE5AFF902754237B00DC5E65 /* FoodFeedItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE5AFF8B2754225700DC5E65 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CE5AFF8C2754226D00DC5E65 /* FoodEventViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		CE823D142738AA1F0012427D = {
 			isa = PBXGroup;
 			children = (
@@ -92,23 +138,13 @@
 		CE823D1F2738AA1F0012427D /* FreeFood */ = {
 			isa = PBXGroup;
 			children = (
-				CE3183322752F4F1008BBC6A /* LocationManager.swift */,
-				CE3183312752F4F1008BBC6A /* LocationRequestView.swift */,
+				CE5AFF8B2754225700DC5E65 /* ViewModels */,
+				CE5AFF8827541F8200DC5E65 /* Views */,
+				CE5AFF8727541F6100DC5E65 /* Models */,
 				924A80112745AEC100E6BF9C /* GoogleService-Info.plist */,
 				CE823D202738AA1F0012427D /* FreeFoodApp.swift */,
-				CE823D332738AAA40012427D /* Model.swift */,
-				9261E6A22745B6AD0099BE59 /* SignInModel.swift */,
-				CE823D222738AA1F0012427D /* ContentView.swift */,
-				CE823D372738B8D50012427D /* FindView.swift */,
-				CE823D352738AEF80012427D /* ActivityView.swift */,
-				CE823D3B2738B9390012427D /* LeaderboardView.swift */,
-				CE823D392738B9170012427D /* AccountView.swift */,
 				CE823D242738AA240012427D /* Assets.xcassets */,
 				CE823D262738AA240012427D /* Preview Content */,
-				92FA5018274309A30065E51A /* FoodSubmissionView.swift */,
-				9273F7B92746A3820057D5EB /* HomeView.swift */,
-				9273F7BB274831600057D5EB /* AppView.swift */,
-				CE823D3F274F1A990012427D /* RegistrationView.swift */,
 			);
 			path = FreeFood;
 			sourceTree = "<group>";
@@ -254,11 +290,15 @@
 				9273F7BC274831600057D5EB /* AppView.swift in Sources */,
 				CE823D3C2738B9390012427D /* LeaderboardView.swift in Sources */,
 				CE823D3A2738B9170012427D /* AccountView.swift in Sources */,
+				CE5AFF8D2754226D00DC5E65 /* FoodEventViewModel.swift in Sources */,
+				CE5AFF8F2754234A00DC5E65 /* FoodFeedView.swift in Sources */,
+				CE5AFF8A2754224100DC5E65 /* FoodEventModel.swift in Sources */,
 				92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */,
 				CE3183342752F4F1008BBC6A /* LocationManager.swift in Sources */,
 				CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */,
 				9273F7BA2746A3820057D5EB /* HomeView.swift in Sources */,
 				CE823D362738AEF80012427D /* ActivityView.swift in Sources */,
+				CE5AFF912754237B00DC5E65 /* FoodFeedItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
