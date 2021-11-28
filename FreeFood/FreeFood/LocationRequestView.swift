@@ -29,21 +29,13 @@ struct LocationRequestView: View {
                             
                             Spacer()
                     
-<<<<<<< HEAD:FreeFood/FreeFood/LocationRequestView.swift
                           NavigationLink(destination: LaunchView(recentRegister: false)) {
-=======
-                            NavigationLink(destination: LaunchView(recentRegister: false)) {
->>>>>>> 3f5312d766423d4575ff3d2b9378a2a6365dab00:FreeFood/FreeFood/Views/LocationRequestView.swift
                             Text("Share Location")
                         }.simultaneousGesture(TapGesture().onEnded {
                             //LocationManager.shared.requestLocation()
                             lm.requestLocation()
                         })
-<<<<<<< HEAD:FreeFood/FreeFood/LocationRequestView.swift
                           NavigationLink(destination: LaunchView(recentRegister: false)) {
-=======
-                            NavigationLink(destination: LaunchView(recentRegister: false)) {
->>>>>>> 3f5312d766423d4575ff3d2b9378a2a6365dab00:FreeFood/FreeFood/Views/LocationRequestView.swift
                             Text("Skip")
                         }
                             
