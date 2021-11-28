@@ -22,7 +22,7 @@ struct FoodFeedItemView: View {
                     .font(.headline)
                 Text(foodEvent.building)
                     .font(.subheadline)
-                Text(foodEvent.roomNum)
+                Text("Room \(foodEvent.roomNum)")
                     .font(.subheadline)
             }
             Spacer()

@@ -12,7 +12,9 @@ struct FoodFeedView: View {
     var body: some View {
         NavigationView {
             List(viewModel.foodEvents) { foodEvent in
-                FoodFeedItemView(foodEvent)
+                NavigationLink(destination: FoodEventView(foodEvent: foodEvent)) {
+                    FoodFeedItemView(foodEvent)
+                }
             }
             .onAppear() {
                 self.viewModel.fetchData()

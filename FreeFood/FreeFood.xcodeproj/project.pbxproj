@@ -19,6 +19,7 @@
 		CE5AFF8D2754226D00DC5E65 /* FoodEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFF8C2754226D00DC5E65 /* FoodEventViewModel.swift */; };
 		CE5AFF8F2754234A00DC5E65 /* FoodFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFF8E2754234A00DC5E65 /* FoodFeedView.swift */; };
 		CE5AFF912754237B00DC5E65 /* FoodFeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFF902754237B00DC5E65 /* FoodFeedItemView.swift */; };
+		CE5AFF932754315F00DC5E65 /* FoodEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFF922754315F00DC5E65 /* FoodEventView.swift */; };
 		CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D202738AA1F0012427D /* FreeFoodApp.swift */; };
 		CE823D232738AA1F0012427D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D222738AA1F0012427D /* ContentView.swift */; };
 		CE823D252738AA240012427D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE823D242738AA240012427D /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		CE5AFF8C2754226D00DC5E65 /* FoodEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventViewModel.swift; sourceTree = "<group>"; };
 		CE5AFF8E2754234A00DC5E65 /* FoodFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFeedView.swift; sourceTree = "<group>"; };
 		CE5AFF902754237B00DC5E65 /* FoodFeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFeedItemView.swift; sourceTree = "<group>"; };
+		CE5AFF922754315F00DC5E65 /* FoodEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventView.swift; sourceTree = "<group>"; };
 		CE823D1D2738AA1F0012427D /* FreeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE823D202738AA1F0012427D /* FreeFoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeFoodApp.swift; sourceTree = "<group>"; };
 		CE823D222738AA1F0012427D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				CE823D3F274F1A990012427D /* RegistrationView.swift */,
 				CE5AFF8E2754234A00DC5E65 /* FoodFeedView.swift */,
 				CE5AFF902754237B00DC5E65 /* FoodFeedItemView.swift */,
+				CE5AFF922754315F00DC5E65 /* FoodEventView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */,
 				9273F7BA2746A3820057D5EB /* HomeView.swift in Sources */,
 				CE823D362738AEF80012427D /* ActivityView.swift in Sources */,
+				CE5AFF932754315F00DC5E65 /* FoodEventView.swift in Sources */,
 				CE5AFF912754237B00DC5E65 /* FoodFeedItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
