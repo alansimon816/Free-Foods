@@ -9,6 +9,7 @@ import SwiftUI
 import FirebaseFirestore
 
 struct FoodSubmissionView: View {
+  @State var submitted = false
   @State var loc = ""
   @State var roomNum = ""
   @State var foodType = ""
@@ -41,10 +42,16 @@ struct FoodSubmissionView: View {
         }
         
         Section() {
-          Button("Submit") {
-              storeFoodSubmission(building: loc, roomNum: roomNum, foodType: foodType, quantity: foodSizeOptions[sizeIndex], additionalInfo: infoText)
-          }
-          Button("Cancel") {}
+            HStack {
+                Button("Submit") {
+                    storeFoodSubmission(building: loc, roomNum: roomNum, foodType: foodType, quantity: foodSizeOptions[sizeIndex], additionalInfo: infoText)
+                    submitted = true
+                }
+                if submitted {
+                    Spacer()
+                    Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
+                }
+            }
         }
       }.navigationBarTitle(Text("Food Submission"))
     }
