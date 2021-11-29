@@ -10,7 +10,7 @@
 		924A80122745AEC100E6BF9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 924A80112745AEC100E6BF9C /* GoogleService-Info.plist */; };
 		9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9261E6A22745B6AD0099BE59 /* SignInModel.swift */; };
 		9273F7BA2746A3820057D5EB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F7B92746A3820057D5EB /* HomeView.swift */; };
-		9273F7BC274831600057D5EB /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F7BB274831600057D5EB /* LaunchView.swift */; };
+		9273F7BC274831600057D5EB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F7BB274831600057D5EB /* AppView.swift */; };
 		92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA5018274309A30065E51A /* FoodSubmissionView.swift */; };
 		C34106CD3BF8EA15A3CB4DFF /* Pods_FreeFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1DC5A00A7D2847C824380D /* Pods_FreeFood.framework */; };
 		CE3183332752F4F1008BBC6A /* LocationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3183312752F4F1008BBC6A /* LocationRequestView.swift */; };
@@ -32,7 +32,7 @@
 		924A80112745AEC100E6BF9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9261E6A22745B6AD0099BE59 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		9273F7B92746A3820057D5EB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		9273F7BB274831600057D5EB /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		9273F7BB274831600057D5EB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		92FA5018274309A30065E51A /* FoodSubmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSubmissionView.swift; sourceTree = "<group>"; };
 		C542F32A5345FAE68BDA39A8 /* Pods-FreeFood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeFood.debug.xcconfig"; path = "Target Support Files/Pods-FreeFood/Pods-FreeFood.debug.xcconfig"; sourceTree = "<group>"; };
 		CE3183312752F4F1008BBC6A /* LocationRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 				CE823D262738AA240012427D /* Preview Content */,
 				92FA5018274309A30065E51A /* FoodSubmissionView.swift */,
 				9273F7B92746A3820057D5EB /* HomeView.swift */,
-				9273F7BB274831600057D5EB /* LaunchView.swift */,
+				9273F7BB274831600057D5EB /* AppView.swift */,
 				CE823D3F274F1A990012427D /* RegistrationView.swift */,
 			);
 			path = FreeFood;
@@ -251,7 +251,7 @@
 				CE823D40274F1A990012427D /* RegistrationView.swift in Sources */,
 				CE3183332752F4F1008BBC6A /* LocationRequestView.swift in Sources */,
 				CE823D382738B8D50012427D /* FindView.swift in Sources */,
-				9273F7BC274831600057D5EB /* LaunchView.swift in Sources */,
+				9273F7BC274831600057D5EB /* AppView.swift in Sources */,
 				CE823D3C2738B9390012427D /* LeaderboardView.swift in Sources */,
 				CE823D3A2738B9170012427D /* AccountView.swift in Sources */,
 				92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */,

@@ -29,13 +29,13 @@ struct LocationRequestView: View {
                             
                             Spacer()
                     
-                          NavigationLink(destination: LaunchView(recentRegister: false)) {
+                        NavigationLink(destination: LaunchView(false)) {
                             Text("Share Location")
                         }.simultaneousGesture(TapGesture().onEnded {
                             //LocationManager.shared.requestLocation()
                             lm.requestLocation()
                         })
-                          NavigationLink(destination: LaunchView(recentRegister: false)) {
+                        NavigationLink(destination: LaunchView(false)) {
                             Text("Skip")
                         }
                             

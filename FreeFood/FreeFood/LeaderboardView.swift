@@ -9,20 +9,22 @@ import Foundation
 import SwiftUI
 
 struct LeaderboardView: View {
-  @EnvironmentObject var model: Model
-  
-  // Make this a navigation View, navigation link takes you to user's summary page
-  var body: some View {
-    List {
-      ForEach(model.users.sorted(by: {$0.score < $1.score})) { user in
-        NavigationLink {
-          UserSummaryView(user)
-        } label: {
-          UserItemView(user)
+    @EnvironmentObject var model: Model
+    
+    // Make this a navigation View, navigation link takes you to user's summary page
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(model.users.sorted(by: {$0.score < $1.score})) { user in
+                    NavigationLink {
+                        UserSummaryView(user)
+                    } label: {
+                        UserItemView(user)
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }
 
 // Leaderboard list item view for a user

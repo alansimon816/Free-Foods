@@ -20,29 +20,25 @@ struct HomeView: View {
           .scaledToFit()
           .frame(width: 300, height: 300)
           .clipShape(Circle())
-          .padding(.bottom, 200)
-        VStack {
-          NavigationLink(destination: SimpleRegisterView(), isActive: $showSignUp) {
-            Text("Sign Up")
-              .foregroundColor(.white)
-              .background(
-                RoundedRectangle(cornerRadius: 10)
-                  .frame(width: 200, height: 50)
-              )
-          }.navigationBarTitle("")
-            .navigationBarHidden(true)
-            .offset(x: 0, y: -50)
-          NavigationLink(destination: SimpleLoginView(), isActive: $showSignIn) {
-            Text("Sign In")
-              .foregroundColor(.white)
-              .background(
-                RoundedRectangle(cornerRadius: 10)
-                  .frame(width: 200, height: 50)
-              )
-          }
-        }.padding(.bottom, 20)
-      }.navigationBarTitle("", displayMode: .inline)
-        .navigationBarHidden(true)
+          .padding(.bottom, 100)
+        NavigationLink(destination: SimpleRegisterView(), isActive: $showSignUp) {
+          Text("Sign Up")
+            .foregroundColor(.white)
+            .background(
+              RoundedRectangle(cornerRadius: 10)
+                .frame(width: 200, height: 50)
+            )
+        }
+        .offset(x: 0, y: -50)
+        NavigationLink(destination: SimpleLoginView(), isActive: $showSignIn) {
+          Text("Sign In")
+            .foregroundColor(.white)
+            .background(
+              RoundedRectangle(cornerRadius: 10)
+                .frame(width: 200, height: 50)
+            )
+        }
+      }
     }
   }
 }
@@ -71,107 +67,94 @@ struct SimpleRegisterView: View {
   
   var body: some View {
     VStack {
-      VStack {
-        TextField("Email", text: self.$email)
-          .textContentType(.emailAddress)
-          .keyboardType(.emailAddress)
-          .autocapitalization(.none)
-          .textFieldStyle(.roundedBorder)
-        ZStack(alignment: .trailing) {
-          if isSecured {
-            SecureField("Password", text: $password)
-          } else {
-            TextField("Password", text: $password)
-          }
-          
-          Button(action: {
-            isSecured.toggle()
-          }) {
-            Image(systemName: self.isSecured ? "eye.slash" : "eye")
-              .accentColor(.gray)
-          }
+      TextField("Email", text: self.$email)
+        .textContentType(.emailAddress)
+        .keyboardType(.emailAddress)
+        .autocapitalization(.none)
+        .textFieldStyle(.roundedBorder)
+      ZStack(alignment: .trailing) {
+        if isSecured {
+          SecureField("Password", text: $password)
+        } else {
+          TextField("Password", text: $password)
         }
         
-        ZStack(alignment: .trailing) {
-          if isConfirmedSecured {
-            SecureField("Confirm Password", text: $repass)
-          } else {
-            TextField("Confirm Password", text: $repass)
-          }
-          
-          Button(action: {
-            isConfirmedSecured.toggle()
-          }) {
-            Image(systemName: self.isConfirmedSecured ? "eye.slash" : "eye")
-              .accentColor(.gray)
-          }
+        Button(action: {
+          isSecured.toggle()
+        }) {
+          Image(systemName: self.isSecured ? "eye.slash" : "eye")
+            .accentColor(.gray)
         }
       }
-      .autocapitalization(.none)
+      
+      ZStack(alignment: .trailing) {
+        if isConfirmedSecured {
+          SecureField("Confirm Password", text: $repass)
+        } else {
+          TextField("Confirm Password", text: $repass)
+        }
+        
+        Button(action: {
+          isConfirmedSecured.toggle()
+        }) {
+          Image(systemName: self.isConfirmedSecured ? "eye.slash" : "eye")
+            .accentColor(.gray)
+        }
+      }
+    }.autocapitalization(.none)
       .textFieldStyle(.roundedBorder)
       .disableAutocorrection(true)
-      .frame(width: 300, height: 200, alignment: .center)
-      VStack {
-        NavigationLink(destination: LaunchView(recentRegister: false), isActive: $isRegistered) {
-          EmptyView()
-        }
-        Button(action: {
-          if password.count > 6 {
-            if password == repass {
-              sam.register(email, password) { result in
-                switch result {
-                  case .failure(let error):
-                    errorInfo = AuthErrorInfo(id: .otherError,
-                                              message: error.localizedDescription)
-                    
-                    print("<DEBUG> Sign up unsuccessful")
-                    print(error.localizedDescription)
-                    print()
-                    didError = true
-                  case .success(_ ):
-                    print("<DEBUG> Sign up successful")
-                    print()
-                    isRegistered = true
-                }
-              }
-            } else {
-              errorInfo = AuthErrorInfo(id: .passwordMismatch,
-                                        message:
+    NavigationLink(destination: AppView(true), isActive: $isRegistered) {
+      Text("Submit")
+    }.simultaneousGesture(TapGesture().onEnded {
+      if password.count > 6 {
+        if password == repass {
+          sam.register(email, password) { result in
+            switch result {
+              case .failure(let error):
+                errorInfo = AuthErrorInfo(id: .otherError,
+                                          message: error.localizedDescription)
+                
+                print("<DEBUG> Sign up unsuccessful")
+                print(error.localizedDescription)
+                print()
+                didError = true
+              case .success(_ ):
+                print("<DEBUG> Sign up successful")
+                print()
+                isRegistered = true
+                isRecentRegister = true
+            }
+          }
+        } else {
+          errorInfo = AuthErrorInfo(id: .passwordMismatch,
+                                    message:
                                             """
                                             The passwords did not match.
                                             Please try again.
                                             """)
-              didError = true
-            }
-          } else {
-            errorInfo = AuthErrorInfo(id: .passwordTooShort,
-                                      message:
+          didError = true
+        }
+      } else {
+        errorInfo = AuthErrorInfo(id: .passwordTooShort,
+                                  message:
                                           """
                                           The password entered was too short.
                                           Passwords must be 6 characters or longer.
                                           Please try again.
                                           """)
-            didError = true
-          }
-        }) {
-          Text("Submit")
-            .foregroundColor(.white)
-            .background(
-              RoundedRectangle(cornerRadius: 10)
-                .frame(width: 100, height: 50)
-            )
-        }
-        .alert(isPresented: $didError) {
-          Alert(title: Text("An error has occurred"),
-                message: Text(errorInfo!.message),
-                dismissButton: .default(Text("Close"), action: {
-            isRegistered = false
-            email = ""
-            password = ""
-            repass = ""
-          }))
-        }
+        didError = true
       }
+    }).alert("An error has occurred", isPresented: $didError, presenting: errorInfo) { errInfo in
+      Button() {
+        email = ""
+        password = ""
+        repass = ""
+      } label: {
+        Text("Close")
+      }
+    } message: { errInfo in
+      Text(errInfo.message)
     }
   }
 }
@@ -188,73 +171,58 @@ struct SimpleLoginView: View {
   
   var body: some View {
     VStack {
-      VStack {
-        TextField("Email", text: self.$email)
-          .textContentType(.emailAddress)
-          .keyboardType(.emailAddress)
-          .autocapitalization(.none)
-          .textFieldStyle(.roundedBorder)
-        ZStack(alignment: .trailing) {
-          if isSecured {
-            SecureField("Enter Password", text: $password)
-          } else {
-            TextField("Enter Password", text: $password)
-          }
-          
-          Button(action: {
-            isSecured.toggle()
-          }) {
-            Image(systemName: self.isSecured ? "eye.slash" : "eye")
-              .accentColor(.gray)
-          }
+      TextField("Email", text: self.$email)
+        .textContentType(.emailAddress)
+        .keyboardType(.emailAddress)
+        .autocapitalization(.none)
+        .textFieldStyle(.roundedBorder)
+      ZStack(alignment: .trailing) {
+        if isSecured {
+          SecureField("Enter Password", text: $password)
+        } else {
+          TextField("Enter Password", text: $password)
         }
-      }
-      .autocapitalization(.none)
-      .textFieldStyle(.roundedBorder)
-      .disableAutocorrection(true)
-      .frame(width: 300, height: 200, alignment: .center)
-      
-      VStack {
-        NavigationLink(destination: LaunchView(recentRegister: false), isActive: $loginSuccess) {
-          EmptyView()
-        }
+        
         Button(action: {
-          sam.signIn(email, password) { result in
-            switch result {
-              case .failure(let error):
-                errorInfo = AuthErrorInfo(id: .otherError,
-                                          message: error.localizedDescription)
-                print("<DEBUG> Sign in unsuccessful")
-                print(error.localizedDescription)
-                print()
-                didError = true
-                loginSuccess = false
-              case .success(_ ):
-                loginSuccess = true
-                didError = false
-                print("<DEBUG> Sign in successful")
-                print()
-            }
-          }
+          isSecured.toggle()
         }) {
-          Text("Submit")
-            .foregroundColor(.white)
-            .background(
-              RoundedRectangle(cornerRadius: 10)
-                .frame(width: 100, height: 50)
-            )
-        }
-        .padding(.bottom, 100)
-        .alert(isPresented: $didError) {
-          Alert(title: Text("An error has occurred"),
-                message: Text(errorInfo!.message),
-                dismissButton: .default(Text("Close"), action: {
-            loginSuccess = false
-            email = ""
-            password = ""
-          }))
+          Image(systemName: self.isSecured ? "eye.slash" : "eye")
+            .accentColor(.gray)
         }
       }
+    }
+    .autocapitalization(.none)
+    .textFieldStyle(.roundedBorder)
+    .disableAutocorrection(true)
+    NavigationLink(destination: AppView(recentRegister: false), isActive: $loginSuccess) {
+      Text("Submit")
+    }.simultaneousGesture(TapGesture().onEnded {
+      sam.signIn(email, password) { result in
+        switch result {
+          case .failure(let error):
+            errorInfo = AuthErrorInfo(id: .otherError,
+                                      message: error.localizedDescription)
+            print("<DEBUG> Sign in unsuccessful")
+            print(error.localizedDescription)
+            print()
+            didError = true
+            loginSuccess = false
+          case .success(_ ):
+            loginSuccess = true
+            print("<DEBUG> Sign in successful")
+            print()
+        }
+      }
+    }).alert("An error has occurred", isPresented: $didError, presenting: errorInfo) { errInfo in
+      Button() {
+        email = ""
+        password = ""
+        repass = ""
+      } label: {
+        Text("Close")
+      }
+    } message: { errInfo in
+      Text(errInfo.message)
     }
   }
 }
@@ -274,11 +242,5 @@ struct AuthErrorInfo: Identifiable {
 struct HomeView_Previews: PreviewProvider {
   static var previews: some View {
     HomeView().environmentObject(SimpleAuthModel())
-  }
-}
-
-struct SimpleRegisterView_Preview: PreviewProvider {
-  static var previews: some View {
-    SimpleRegisterView().environmentObject(SimpleAuthModel())
   }
 }
