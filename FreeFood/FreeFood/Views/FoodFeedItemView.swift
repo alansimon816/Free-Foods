@@ -10,10 +10,6 @@ import SwiftUI
 struct FoodFeedItemView: View {
     var foodEvent: FoodEvent
     
-    init(_ foodEvent: FoodEvent) {
-        self.foodEvent = foodEvent
-    }
-    
     var body: some View {
         HStack {
             Image(systemName: "bolt.circle.fill") //placeholder img; replace with an image corresponding to each case of Food enum or restaurant logo if food event is restaurant-based
@@ -26,7 +22,6 @@ struct FoodFeedItemView: View {
                     .font(.subheadline)
             }
             Spacer()
-            
         }
     }
 }

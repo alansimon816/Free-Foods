@@ -11,7 +11,6 @@ import CoreData
 struct ContentView: View {
   @EnvironmentObject var sam: SimpleAuthModel
   var body: some View {
-//    RegistrationView()
     HomeView()
   }
 }
