@@ -8,22 +8,10 @@
 import SwiftUI
 
 struct AppView: View {
-  var recentRegister: Bool
-  // This view is after a successful login
-  var body: some View {
-    LaunchView(recentRegister: recentRegister)
-  }
-}
-
-struct LaunchView: View {
-  var recentRegister: Bool
   
   var body: some View {
     // We should add system images for each of these tab items
     NavigationView {
-      if recentRegister {
-        RegistrationView()
-      } else {
         TabView() {
           FindView()
             .tabItem {Image(systemName: "magnifyingglass")}
@@ -36,13 +24,12 @@ struct LaunchView: View {
             .navigationBarHidden(true)
             .tabItem {Image(systemName: "person.crop.circle")}
         }
-      }
-    }.navigationBarBackButtonHidden(true)
-  }
+      }.navigationBarBackButtonHidden(true)
+    }
 }
 
 struct AppView_Previews: PreviewProvider {
   static var previews: some View {
-    AppView(recentRegister: false)
+    AppView()
   }
 }
