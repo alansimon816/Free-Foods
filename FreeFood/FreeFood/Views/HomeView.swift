@@ -108,7 +108,7 @@ struct SimpleRegisterView: View {
       .disableAutocorrection(true)
       .frame(width: 300, height: 200, alignment: .center)
       VStack {
-        NavigationLink(destination: AppView(), isActive: $isRegistered) {
+        NavigationLink(destination: RegistrationView(), isActive: $isRegistered) {
           EmptyView()
         }
         Button(action: {
