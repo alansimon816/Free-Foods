@@ -21,6 +21,8 @@
 		CE5AFF912754237B00DC5E65 /* FoodFeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFF902754237B00DC5E65 /* FoodFeedItemView.swift */; };
 		CE5AFF932754315F00DC5E65 /* FoodEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AFF922754315F00DC5E65 /* FoodEventView.swift */; };
 		CE69C44B2755C5AC005148BE /* SubmissionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C44A2755C5AC005148BE /* SubmissionHistoryView.swift */; };
+		CE69C4692756BB7D005148BE /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C4682756BB7D005148BE /* EditAccountView.swift */; };
+		CE69C46B2756BBA4005148BE /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C46A2756BBA4005148BE /* AboutView.swift */; };
 		CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D202738AA1F0012427D /* FreeFoodApp.swift */; };
 		CE823D232738AA1F0012427D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D222738AA1F0012427D /* ContentView.swift */; };
 		CE823D252738AA240012427D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE823D242738AA240012427D /* Assets.xcassets */; };
@@ -49,6 +51,8 @@
 		CE5AFF902754237B00DC5E65 /* FoodFeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFeedItemView.swift; sourceTree = "<group>"; };
 		CE5AFF922754315F00DC5E65 /* FoodEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventView.swift; sourceTree = "<group>"; };
 		CE69C44A2755C5AC005148BE /* SubmissionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionHistoryView.swift; sourceTree = "<group>"; };
+		CE69C4682756BB7D005148BE /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
+		CE69C46A2756BBA4005148BE /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		CE823D1D2738AA1F0012427D /* FreeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE823D202738AA1F0012427D /* FreeFoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeFoodApp.swift; sourceTree = "<group>"; };
 		CE823D222738AA1F0012427D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				CE5AFF902754237B00DC5E65 /* FoodFeedItemView.swift */,
 				CE5AFF922754315F00DC5E65 /* FoodEventView.swift */,
 				CE69C44A2755C5AC005148BE /* SubmissionHistoryView.swift */,
+				CE69C4682756BB7D005148BE /* EditAccountView.swift */,
+				CE69C46A2756BBA4005148BE /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 			files = (
 				9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */,
 				CE823D342738AAA40012427D /* Model.swift in Sources */,
+				CE69C46B2756BBA4005148BE /* AboutView.swift in Sources */,
 				CE823D232738AA1F0012427D /* ContentView.swift in Sources */,
 				CE823D40274F1A990012427D /* RegistrationView.swift in Sources */,
 				CE3183332752F4F1008BBC6A /* LocationRequestView.swift in Sources */,
@@ -299,6 +306,7 @@
 				CE5AFF8D2754226D00DC5E65 /* FoodEventViewModel.swift in Sources */,
 				CE5AFF8F2754234A00DC5E65 /* FoodFeedView.swift in Sources */,
 				CE5AFF8A2754224100DC5E65 /* FoodEventModel.swift in Sources */,
+				CE69C4692756BB7D005148BE /* EditAccountView.swift in Sources */,
 				92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */,
 				CE3183342752F4F1008BBC6A /* LocationManager.swift in Sources */,
 				CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */,
