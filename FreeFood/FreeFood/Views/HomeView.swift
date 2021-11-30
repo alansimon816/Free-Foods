@@ -39,6 +39,7 @@ struct HomeView: View {
             )
         }
       }
+      //.navigationTitle("HomeView")
     }
   }
 }
@@ -104,7 +105,7 @@ struct SimpleRegisterView: View {
     }.autocapitalization(.none)
       .textFieldStyle(.roundedBorder)
       .disableAutocorrection(true)
-      NavigationLink(destination: AppView(recentRegister: true), isActive: $isRegistered) {
+      NavigationLink(destination: RegistrationView(), isActive: $isRegistered) {
       Text("Submit")
     }.simultaneousGesture(TapGesture().onEnded {
       if password.count > 6 {
@@ -193,7 +194,7 @@ struct SimpleLoginView: View {
     .autocapitalization(.none)
     .textFieldStyle(.roundedBorder)
     .disableAutocorrection(true)
-    NavigationLink(destination: AppView(recentRegister: false), isActive: $loginSuccess) {
+    NavigationLink(destination: AppView(), isActive: $loginSuccess) {
       Text("Submit")
     }.simultaneousGesture(TapGesture().onEnded {
       sam.signIn(email, password) { result in
@@ -223,6 +224,7 @@ struct SimpleLoginView: View {
     } message: { errInfo in
       Text(errInfo.message)
     }
+    //.navigationTitle("SimpleLoginView")
   }
 }
 
