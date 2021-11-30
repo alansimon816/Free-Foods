@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Remove later and change file name to LaunchView instead
 struct AppView: View {
   var recentRegister: Bool
   // This view is after a successful login
