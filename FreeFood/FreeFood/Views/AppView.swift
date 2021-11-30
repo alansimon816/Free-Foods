@@ -26,15 +26,15 @@ struct LaunchView: View {
       } else {
         TabView() {
           FindView()
-            .tabItem {Text("Find")}
+            .tabItem {Image(systemName: "magnifyingglass")}
           ActivityView()
-            .tabItem {Text("Activity")}
+            .tabItem {Image(systemName: "point.3.filled.connected.trianglepath.dotted")}
           LeaderboardView()
             .navigationBarHidden(true)
-            .tabItem {Text("Leaderboard")}
+            .tabItem {Image(systemName: "chart.bar.xaxis")}
           AccountView()
             .navigationBarHidden(true)
-            .tabItem {Text("Account")}
+            .tabItem {Image(systemName: "person.crop.circle")}
         }
       }
     }.navigationBarBackButtonHidden(true)
