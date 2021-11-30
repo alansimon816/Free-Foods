@@ -42,7 +42,7 @@ struct RegistrationView: View {
 //        }.navigationBarTitle(Text("")).navigationBarHidden(true)
         
                 if showLocationRequestView {
-                    AppView()
+                    LocationRequestView()
                 } else {
                           Form {
                               Section(header: Text("USERNAME")) {
