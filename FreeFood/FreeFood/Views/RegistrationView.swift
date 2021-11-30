@@ -18,31 +18,8 @@ struct RegistrationView: View {
   @State var showLocationRequestView = false
   
   var body: some View {
-    //        NavigationView {
-    //          Form {
-    //              Section(header: Text("USERNAME")) {
-    //                TextField("Username", text: $username)
-    //              }
-    //                Section(header: Text("NAME")) {
-    //                  TextField("First", text: $firstName)
-    //                  TextField("Last", text: $lastName)
-    //                }
-    //                  Section(header: Text("FAVORITE FOODS")) {
-    //                      SelectMultipleList(selectedFoods: self.$selectedFoods)
-    //                }
-    //              Section() {
-    //                  NavigationLink(destination: AppView(recentRegister: false)) {
-    //                        Text("Submit")
-    //                    }.simultaneousGesture(TapGesture().onEnded {
-    //                        print("HELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLO\n\n\n\n\n")
-    //                        self.storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
-    //                    })
-    //              }
-    //            }
-    //        }.navigationBarTitle(Text("")).navigationBarHidden(true)
-    
     if showLocationRequestView {
-      AppView()
+      LocationRequestView()
     } else {
       Form {
         Section(header: Text("USERNAME")) {
@@ -63,8 +40,6 @@ struct RegistrationView: View {
       }
     }
   }
-  
-  
   
   func storeUserDetails(username: String, firstName: String, lastName: String, favFoods:[String]) -> Void {
     let sam = SimpleAuthModel()
@@ -93,7 +68,6 @@ struct RegistrationView: View {
         print("Document added with ID: \(ref!.documentID)")
       }
     }
-    
   }
 }
 
