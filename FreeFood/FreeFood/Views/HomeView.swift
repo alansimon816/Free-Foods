@@ -39,7 +39,6 @@ struct HomeView: View {
             )
         }
       }
-      //.navigationTitle("HomeView")
     }
   }
 }
@@ -109,7 +108,7 @@ struct SimpleRegisterView: View {
       .disableAutocorrection(true)
       .frame(width: 300, height: 200, alignment: .center)
       VStack {
-        NavigationLink(destination: LaunchView(recentRegister: false), isActive: $isRegistered) {
+        NavigationLink(destination: AppView(), isActive: $isRegistered) {
           EmptyView()
         }
         Button(action: {
@@ -212,7 +211,7 @@ struct SimpleLoginView: View {
       .frame(width: 300, height: 200, alignment: .center)
       
       VStack {
-        NavigationLink(destination: LaunchView(recentRegister: false), isActive: $loginSuccess) {
+        NavigationLink(destination: AppView(), isActive: $loginSuccess) {
           EmptyView()
         }
         Button(action: {
@@ -253,11 +252,8 @@ struct SimpleLoginView: View {
         }
       }
     }
-    //.navigationTitle("SimpleLoginView")
   }
 }
-
-
 
 struct AuthErrorInfo: Identifiable {
   enum AuthErrorType {
