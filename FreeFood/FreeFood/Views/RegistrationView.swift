@@ -15,29 +15,85 @@ struct RegistrationView: View {
     @State var firstName = ""
     @State var lastName = ""
     @State var selectedFoods: [String] = []
+    @State var showLocationRequestView = false
     
     var body: some View {
-        NavigationView {
-          Form {
-              Section(header: Text("USERNAME")) {
-                TextField("Username", text: $username)
-              }
-                Section(header: Text("NAME")) {
-                  TextField("First", text: $firstName)
-                  TextField("Last", text: $lastName)
+//        NavigationView {
+//          Form {
+//              Section(header: Text("USERNAME")) {
+//                TextField("Username", text: $username)
+//              }
+//                Section(header: Text("NAME")) {
+//                  TextField("First", text: $firstName)
+//                  TextField("Last", text: $lastName)
+//                }
+//                  Section(header: Text("FAVORITE FOODS")) {
+//                      SelectMultipleList(selectedFoods: self.$selectedFoods)
+//                }
+//              Section() {
+//                  NavigationLink(destination: AppView(recentRegister: false)) {
+//                        Text("Submit")
+//                    }.simultaneousGesture(TapGesture().onEnded {
+//                        print("HELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLO\n\n\n\n\n")
+//                        self.storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
+//                    })
+//              }
+//            }
+//        }.navigationBarTitle(Text("")).navigationBarHidden(true)
+        
+                if showLocationRequestView {
+                    AppView()
+                } else {
+                          Form {
+                              Section(header: Text("USERNAME")) {
+                                TextField("Username", text: $username)
+                              }
+                                Section(header: Text("NAME")) {
+                                  TextField("First", text: $firstName)
+                                  TextField("Last", text: $lastName)
+                                }
+                                  Section(header: Text("FAVORITE FOODS")) {
+                                      SelectMultipleList(selectedFoods: self.$selectedFoods)
+                                }
+                              Button("Submit") {
+                                  print("HELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLO\n\n\n\n\n")
+                                  self.storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
+                                  showLocationRequestView = true
+                              }
+                            }
                 }
-                  Section(header: Text("FAVORITE FOODS")) {
-                      SelectMultipleList(selectedFoods: self.$selectedFoods)
-                }
-                Section() {
-                  NavigationLink(destination: AppView(recentRegister: false)) {
-                        Text("Submit")
-                    }.simultaneousGesture(TapGesture().onEnded {
-                        storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
-                    })
-                }
+    }
+        
+
+    
+    func storeUserDetails(username: String, firstName: String, lastName: String, favFoods:[String]) -> Void {
+        let sam = SimpleAuthModel()
+        let db = Firestore.firestore()
+        var UID = ""
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+        
+        if let user = sam.auth.currentUser {
+            //User is signed in
+            UID = user.uid
+        } else {
+            //No user is signed in
+            print("<DEBUG> No user is currently signed in")
+        }
+        
+        ref = db.collection("users").addDocument(data: [
+            "First Name": firstName,
+            "Last Name": lastName,
+            "Favorite Food Types": favFoods,
+            "UID": UID
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
             }
-        }.navigationBarTitle(Text("")).navigationBarHidden(true)
+        }
+
     }
 }
                                           
@@ -77,34 +133,4 @@ struct SelectMultipleList: View {
             }
         }
     }
-}
-    
-func storeUserDetails(username: String, firstName: String, lastName: String, favFoods:[String]) -> Void {
-    let sam = SimpleAuthModel()
-    let db = Firestore.firestore()
-    var UID = ""
-    // Add a new document with a generated ID
-    var ref: DocumentReference? = nil
-    
-    if let user = sam.auth.currentUser {
-        //User is signed in
-        UID = user.uid
-    } else {
-        //No user is signed in
-        print("<DEBUG> No user is currently signed in")
-    }
-    
-    ref = db.collection("users").addDocument(data: [
-        "First Name": firstName,
-        "Last Name": lastName,
-        "Favorite Food Types": favFoods,
-        "UID": UID
-    ]) { err in
-        if let err = err {
-            print("Error adding document: \(err)")
-        } else {
-            print("Document added with ID: \(ref!.documentID)")
-        }
-    }
-
 }

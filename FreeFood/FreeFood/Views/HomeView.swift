@@ -39,6 +39,7 @@ struct HomeView: View {
             )
         }
       }
+      //.navigationTitle("HomeView")
     }
   }
 }
@@ -252,6 +253,7 @@ struct SimpleLoginView: View {
         }
       }
     }
+    //.navigationTitle("SimpleLoginView")
   }
 }
 
