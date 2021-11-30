@@ -16,6 +16,8 @@ struct RegistrationView: View {
   @State var lastName = ""
   @State var selectedFoods: [String] = []
   @State var showLocationRequestView = false
+  @State private var incomplete = false
+  @State private var formError: FormError?
   
   var body: some View {
     if showLocationRequestView {
@@ -32,11 +34,34 @@ struct RegistrationView: View {
         Section(header: Text("FAVORITE FOODS")) {
           SelectMultipleList(selectedFoods: self.$selectedFoods)
         }
-        Button("Submit") {
-          print("HELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLO\n\n\n\n\n")
-          self.storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
-          showLocationRequestView = true
-        }
+        Button("Submit", action: {
+          if username == "" || username == "Username" {
+            incomplete = true
+            print("<DEBUG> Username was not entered.")
+            formError = .usernameMissing
+          }
+          
+          if firstName == "" || firstName == "First" {
+            if incomplete {
+              formError = .bothMissing
+            } else {
+              formError = .nameMissing
+            }
+            incomplete = true
+            return
+          }
+          
+          if !incomplete {
+            print("HELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLO\n\n\n\n\n")
+            self.storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
+            showLocationRequestView = true
+          }
+        })
+          .alert(isPresented: $incomplete) {
+            Alert(title: Text(formError!.rawValue),
+                  message: Text("Please enter missing info."),
+                  dismissButton: .default(Text("OK")))
+          }
       }
     }
   }
@@ -69,6 +94,12 @@ struct RegistrationView: View {
       }
     }
   }
+}
+
+enum FormError: String {
+  case usernameMissing = "Username Missing"
+  case nameMissing = "Name Missing"
+  case bothMissing = "Username and Name Missing"
 }
 
 struct FoodRow: View {
