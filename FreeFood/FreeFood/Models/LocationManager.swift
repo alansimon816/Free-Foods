@@ -9,7 +9,7 @@ import CoreLocation
 
 
 class LocationManager: NSObject, ObservableObject {
-    @Published var userLocation: CLLocation?
+    @Published var userLocation: CLLocation? = nil
     private let lm = CLLocationManager()
     static let shared = LocationManager() // Accessible anywhere in app
     
@@ -18,6 +18,7 @@ class LocationManager: NSObject, ObservableObject {
         super.init()
         lm.delegate = self
         lm.desiredAccuracy = kCLLocationAccuracyBest
+        lm.requestWhenInUseAuthorization()
         lm.startUpdatingLocation()
     }
     
@@ -47,7 +48,7 @@ extension LocationManager: CLLocationManagerDelegate {
         }
     }
     
-    // Manages location after user has agreed to share their location
+    // used after user has agreed to share their location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let loc = locations.last else { return }
         self.userLocation = loc

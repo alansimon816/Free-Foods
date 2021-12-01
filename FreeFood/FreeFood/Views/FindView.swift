@@ -10,8 +10,8 @@ struct FindView: View {
   var body: some View {
     VStack {
       HStack {
-        NavigationLink(destination: Text("Find Map")) {
-          Text("Find Map").padding(.horizontal, 10)
+          NavigationLink(destination: FoodMapView().navigationTitle("Food Map")) {
+          Text("Food Map").padding(.horizontal, 10)
         }
         Spacer()
         NavigationLink(destination: FoodSubmissionView()) {
