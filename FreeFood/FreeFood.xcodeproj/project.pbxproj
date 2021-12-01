@@ -23,6 +23,10 @@
 		CE69C44B2755C5AC005148BE /* SubmissionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C44A2755C5AC005148BE /* SubmissionHistoryView.swift */; };
 		CE69C4692756BB7D005148BE /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C4682756BB7D005148BE /* EditAccountView.swift */; };
 		CE69C46B2756BBA4005148BE /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C46A2756BBA4005148BE /* AboutView.swift */; };
+		CE69C46D2756ED76005148BE /* FoodMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C46C2756ED76005148BE /* FoodMapView.swift */; };
+		CE69C46F2756F86A005148BE /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C46E2756F86A005148BE /* Landmark.swift */; };
+		CE69C4712756F8D8005148BE /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C4702756F8D8005148BE /* LandmarkAnnotation.swift */; };
+		CE69C473275707C1005148BE /* ListPlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C472275707C1005148BE /* ListPlacesView.swift */; };
 		CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D202738AA1F0012427D /* FreeFoodApp.swift */; };
 		CE823D232738AA1F0012427D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D222738AA1F0012427D /* ContentView.swift */; };
 		CE823D252738AA240012427D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE823D242738AA240012427D /* Assets.xcassets */; };
@@ -53,6 +57,10 @@
 		CE69C44A2755C5AC005148BE /* SubmissionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionHistoryView.swift; sourceTree = "<group>"; };
 		CE69C4682756BB7D005148BE /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 		CE69C46A2756BBA4005148BE /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		CE69C46C2756ED76005148BE /* FoodMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMapView.swift; sourceTree = "<group>"; };
+		CE69C46E2756F86A005148BE /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
+		CE69C4702756F8D8005148BE /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
+		CE69C472275707C1005148BE /* ListPlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlacesView.swift; sourceTree = "<group>"; };
 		CE823D1D2738AA1F0012427D /* FreeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE823D202738AA1F0012427D /* FreeFoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeFoodApp.swift; sourceTree = "<group>"; };
 		CE823D222738AA1F0012427D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +102,8 @@
 				CE823D332738AAA40012427D /* Model.swift */,
 				9261E6A22745B6AD0099BE59 /* SignInModel.swift */,
 				CE5AFF892754224000DC5E65 /* FoodEventModel.swift */,
+				CE69C46E2756F86A005148BE /* Landmark.swift */,
+				CE69C4702756F8D8005148BE /* LandmarkAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -117,6 +127,8 @@
 				CE69C44A2755C5AC005148BE /* SubmissionHistoryView.swift */,
 				CE69C4682756BB7D005148BE /* EditAccountView.swift */,
 				CE69C46A2756BBA4005148BE /* AboutView.swift */,
+				CE69C46C2756ED76005148BE /* FoodMapView.swift */,
+				CE69C472275707C1005148BE /* ListPlacesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE69C473275707C1005148BE /* ListPlacesView.swift in Sources */,
 				9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */,
 				CE823D342738AAA40012427D /* Model.swift in Sources */,
 				CE69C46B2756BBA4005148BE /* AboutView.swift in Sources */,
@@ -300,9 +313,12 @@
 				CE823D40274F1A990012427D /* RegistrationView.swift in Sources */,
 				CE3183332752F4F1008BBC6A /* LocationRequestView.swift in Sources */,
 				CE823D382738B8D50012427D /* FindView.swift in Sources */,
+				CE69C46D2756ED76005148BE /* FoodMapView.swift in Sources */,
 				9273F7BC274831600057D5EB /* AppView.swift in Sources */,
 				CE823D3C2738B9390012427D /* LeaderboardView.swift in Sources */,
 				CE823D3A2738B9170012427D /* AccountView.swift in Sources */,
+				CE69C46F2756F86A005148BE /* Landmark.swift in Sources */,
+				CE69C4712756F8D8005148BE /* LandmarkAnnotation.swift in Sources */,
 				CE5AFF8D2754226D00DC5E65 /* FoodEventViewModel.swift in Sources */,
 				CE5AFF8F2754234A00DC5E65 /* FoodFeedView.swift in Sources */,
 				CE5AFF8A2754224100DC5E65 /* FoodEventModel.swift in Sources */,
@@ -451,6 +467,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeFood/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Free Eats";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow FreeFoods to use your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -484,6 +501,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeFood/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Free Eats";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow FreeFoods to use your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

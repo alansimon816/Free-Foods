@@ -11,17 +11,19 @@ import FirebaseFirestore
 
 // This view is to be presented directly after a user successfully signs up
 struct RegistrationView: View {
-  @State var username = ""
-  @State var firstName = ""
-  @State var lastName = ""
-  @State var selectedFoods: [String] = []
-  @State var showLocationRequestView = false
+  @ObservedObject var lm = LocationManager.shared
+  @State private var username = ""
+  @State private var firstName = ""
+  @State private var lastName = ""
+  @State private var selectedFoods: [String] = []
+  @State private var showAppView = false
+  @State private var search: String = ""
   @State private var incomplete = false
   @State private var formError: FormError?
   
   var body: some View {
-    if showLocationRequestView {
-      LocationRequestView()
+    if showAppView {
+      AppView()
     } else {
       Form {
         Section(header: Text("USERNAME")) {
@@ -49,9 +51,10 @@ struct RegistrationView: View {
           }
           
           if !incomplete {
-            print("HELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLO\n\n\n\n\n")
+            lm.requestLocation()
+            //LocationManager.shared.requestLocation()
             self.storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
-            showLocationRequestView = true
+            showAppView = true
           }
         })
           .alert(isPresented: $incomplete) {
@@ -79,6 +82,7 @@ struct RegistrationView: View {
     }
     
     ref = db.collection("users").addDocument(data: [
+      "Username": username,
       "First Name": firstName,
       "Last Name": lastName,
       "Favorite Food Types": favFoods,
