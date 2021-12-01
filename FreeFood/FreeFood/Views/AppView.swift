@@ -11,16 +11,23 @@ struct AppView: View {
   var body: some View {
     TabView() {
       FindView()
-        .tabItem {Image(systemName: "magnifyingglass")}
+        .tabItem {Label("Find Eats", systemImage: "magnifyingglass")}
       ActivityView()
-        .tabItem {Image(systemName: "point.3.filled.connected.trianglepath.dotted")}
+        .tabItem {Label("Activity", systemImage: "point.3.filled.connected.trianglepath.dotted")}
       LeaderboardView()
         .navigationBarHidden(true)
-        .tabItem {Image(systemName: "chart.bar.xaxis")}
+        .tabItem {Label("Leaderboard", systemImage: "chart.bar.xaxis")}
       AccountView()
         .navigationBarHidden(true)
-        .tabItem {Image(systemName: "person.crop.circle")}
-    }.navigationBarBackButtonHidden(true)
+        .tabItem {Label("Settings", systemImage: "person.crop.circle")}
+    }
+    .navigationBarBackButtonHidden(true)
+    .onAppear {
+      if #available(iOS 15.0, *) {
+        let appearance = UITabBarAppearance()
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+      }
+    }
   }
 }
 
