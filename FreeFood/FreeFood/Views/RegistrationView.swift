@@ -11,37 +11,59 @@ import FirebaseFirestore
 
 // This view is to be presented directly after a user successfully signs up
 struct RegistrationView: View {
+  @ObservedObject var lm = LocationManager.shared
   @State private var username = ""
   @State private var firstName = ""
   @State private var lastName = ""
   @State private var selectedFoods: [String] = []
   @State private var showAppView = false
   @State private var search: String = ""
-  @ObservedObject var lm = LocationManager.shared
+  @State private var incomplete = false
+  @State private var formError: FormError?
   
   var body: some View {
-      if showAppView {
-          AppView()
-      } else {
-          Form {
-            Section(header: Text("USERNAME")) {
-              TextField("Username", text: $username)
-            }
-            Section(header: Text("NAME")) {
-              TextField("First", text: $firstName)
-              TextField("Last", text: $lastName)
-            }
-            Section(header: Text("FAVORITE FOODS")) {
-              SelectMultipleList(selectedFoods: self.$selectedFoods)
-            }
-            Button("Submit") {
-              lm.requestLocation()
-                //LocationManager.shared.requestLocation()
-              self.storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
-              showAppView = true
-            }
+    if showAppView {
+      AppView()
+    } else {
+      Form {
+        Section(header: Text("USERNAME")) {
+          TextField("Username", text: $username)
+        }.autocapitalization(.none)
+          .disableAutocorrection(true)
+        Section(header: Text("NAME")) {
+          TextField("First", text: $firstName)
+          TextField("Last", text: $lastName)
+        }.disableAutocorrection(true)
+        Section(header: Text("FAVORITE FOODS")) {
+          SelectMultipleList(selectedFoods: self.$selectedFoods)
+        }
+        Button("Submit", action: {
+          if username == "" || username == "Username" {
+            incomplete = true
+            print("<DEBUG> Username was not entered.")
+            formError = .usernameMissing
+          }
+          
+          if firstName == "" || firstName == "First" {
+            formError = .nameMissing
+            print("<DEBUG> First name was not entered.")
+            incomplete = true
+          }
+          
+          if !incomplete {
+            lm.requestLocation()
+            //LocationManager.shared.requestLocation()
+            self.storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
+            showAppView = true
+          }
+        })
+          .alert(isPresented: $incomplete) {
+            Alert(title: Text(formError!.rawValue),
+                  message: Text("Please enter missing info."),
+                  dismissButton: .default(Text("OK")))
           }
       }
+    }
   }
   
   func storeUserDetails(username: String, firstName: String, lastName: String, favFoods:[String]) -> Void {
@@ -73,6 +95,12 @@ struct RegistrationView: View {
       }
     }
   }
+}
+
+enum FormError: String {
+  case usernameMissing = "Username Missing"
+  case nameMissing = "Name Missing"
+  case bothMissing = "Username and Name Missing"
 }
 
 struct FoodRow: View {
