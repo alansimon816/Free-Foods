@@ -13,20 +13,24 @@ struct FoodSubmissionView: View {
   @State var loc = ""
   @State var roomNum = ""
   @State var foodType = ""
-  @State var infoText = "Enter more details about the food available, for example, 10 boxes of Subway sandwiches available"
+  @State var placeholderText = "Enter more details about food available, for example, 10 boxes of Subway sandwiches available"
+  @State var infoText = "Enter more details about food available, for example, 10 boxes of Subway sandwiches available"
   @State private var sizeIndex = 0
+  @State private var foodError: FoodFormError?
+  @State private var incomplete = false
   var foodSizeOptions = ["A Few (1 - 5 servings)",
                          "A Decent Amount (6 - 15 servings)",
                          "We Ordered Too Much (16+ servings)"]
+  
   var body: some View {
     Form {
       Section(header: Text("LOCATION")) {
         TextField("Building", text: $loc)
-        TextField("Room Number", text: $roomNum)
-      }
+        TextField("Room #", text: $roomNum)
+      }.disableAutocorrection(true)
       
       Section(header: Text("FOOD INFORMATION")) {
-        TextField("Type (ex. Subways)", text: $foodType)
+        TextField("Restaurant (ex. Subways)", text: $foodType)
         Picker(selection: $sizeIndex, label: Text("Food Amount")) {
           ForEach(0..<foodSizeOptions.count) {
             Text(self.foodSizeOptions[$0])
@@ -36,24 +40,65 @@ struct FoodSubmissionView: View {
       
       Section(header: Text("ADDITIONAL INFO")) {
         TextEditor(text: $infoText)
-          .foregroundColor(.secondary)
+          .foregroundColor(infoText == placeholderText ? .gray : .primary)
           .submitLabel(.done)
+          .onTapGesture {
+            if infoText == placeholderText {
+              infoText = ""
+            }
+          }
       }
       
       Section() {
         HStack {
-          Button("Submit") {
-            storeFoodSubmission(building: loc, roomNum: roomNum, foodType: foodType, quantity: foodSizeOptions[sizeIndex], additionalInfo: infoText)
-            submitted = true
+          Button(action: {
+            if loc == "" {
+              incomplete = true
+              foodError = .buildingMissing
+            }
+            
+            if roomNum == "" {
+              incomplete = true
+              foodError = .roomNoMissing
+            }
+            
+            if foodType == "" {
+              incomplete = true
+              foodError = .restaurantMissing
+            }
+            
+            infoText = (infoText == placeholderText ? "" : infoText)
+            
+            if !incomplete {
+              storeFoodSubmission(building: loc,
+                                  roomNum: roomNum,
+                                  foodType: foodType,
+                                  quantity: foodSizeOptions[sizeIndex],
+                                  additionalInfo: infoText)
+              submitted = true
+            }
+          }) {
+            Text("Submit")
+          }.alert(isPresented: $incomplete) {
+            Alert(title: Text(foodError!.rawValue),
+                  message: Text("Please enter the missing information."),
+                  dismissButton: .default(Text("OK")))
           }
           if submitted {
-            Spacer()
-            Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
+            NavigationLink(destination: AppView(), isActive: $submitted) {
+              EmptyView()
+            }
           }
         }
       }
     }.navigationBarTitle(Text("Food Submission"))
   }
+}
+
+enum FoodFormError: String {
+  case buildingMissing = "Building Missing"
+  case roomNoMissing = "Room No. Missing"
+  case restaurantMissing = "Restaurant Missing"
 }
 
 struct FoodSubmissionView_Previews: PreviewProvider {
@@ -91,5 +136,4 @@ func storeFoodSubmission(building: String, roomNum: String, foodType: String, qu
       print("Document added with ID: \(ref!.documentID)")
     }
   }
-  
 }

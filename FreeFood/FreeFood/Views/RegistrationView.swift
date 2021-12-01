@@ -26,11 +26,12 @@ struct RegistrationView: View {
       Form {
         Section(header: Text("USERNAME")) {
           TextField("Username", text: $username)
-        }
+        }.autocapitalization(.none)
+          .disableAutocorrection(true)
         Section(header: Text("NAME")) {
           TextField("First", text: $firstName)
           TextField("Last", text: $lastName)
-        }
+        }.disableAutocorrection(true)
         Section(header: Text("FAVORITE FOODS")) {
           SelectMultipleList(selectedFoods: self.$selectedFoods)
         }
@@ -42,13 +43,9 @@ struct RegistrationView: View {
           }
           
           if firstName == "" || firstName == "First" {
-            if incomplete {
-              formError = .bothMissing
-            } else {
-              formError = .nameMissing
-            }
+            formError = .nameMissing
+            print("<DEBUG> First name was not entered.")
             incomplete = true
-            return
           }
           
           if !incomplete {
