@@ -11,34 +11,37 @@ import FirebaseFirestore
 
 // This view is to be presented directly after a user successfully signs up
 struct RegistrationView: View {
-  @State var username = ""
-  @State var firstName = ""
-  @State var lastName = ""
-  @State var selectedFoods: [String] = []
-  @State var showLocationRequestView = false
+  @State private var username = ""
+  @State private var firstName = ""
+  @State private var lastName = ""
+  @State private var selectedFoods: [String] = []
+  @State private var showAppView = false
+  @State private var search: String = ""
+  @ObservedObject var lm = LocationManager.shared
   
   var body: some View {
-    if showLocationRequestView {
-      LocationRequestView()
-    } else {
-      Form {
-        Section(header: Text("USERNAME")) {
-          TextField("Username", text: $username)
-        }
-        Section(header: Text("NAME")) {
-          TextField("First", text: $firstName)
-          TextField("Last", text: $lastName)
-        }
-        Section(header: Text("FAVORITE FOODS")) {
-          SelectMultipleList(selectedFoods: self.$selectedFoods)
-        }
-        Button("Submit") {
-          print("HELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLO\n\n\n\n\n")
-          self.storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
-          showLocationRequestView = true
-        }
+      if showAppView {
+          AppView()
+      } else {
+          Form {
+            Section(header: Text("USERNAME")) {
+              TextField("Username", text: $username)
+            }
+            Section(header: Text("NAME")) {
+              TextField("First", text: $firstName)
+              TextField("Last", text: $lastName)
+            }
+            Section(header: Text("FAVORITE FOODS")) {
+              SelectMultipleList(selectedFoods: self.$selectedFoods)
+            }
+            Button("Submit") {
+              lm.requestLocation()
+                //LocationManager.shared.requestLocation()
+              self.storeUserDetails(username: username, firstName: firstName, lastName: lastName, favFoods: selectedFoods)
+              showAppView = true
+            }
+          }
       }
-    }
   }
   
   func storeUserDetails(username: String, firstName: String, lastName: String, favFoods:[String]) -> Void {
@@ -57,6 +60,7 @@ struct RegistrationView: View {
     }
     
     ref = db.collection("users").addDocument(data: [
+      "Username": username,
       "First Name": firstName,
       "Last Name": lastName,
       "Favorite Food Types": favFoods,
