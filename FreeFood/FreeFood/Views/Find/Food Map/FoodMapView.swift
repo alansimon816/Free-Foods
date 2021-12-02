@@ -72,7 +72,6 @@ struct FoodMapView: View {
             }   .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
                 .offset(y: 35)
-            
             ListPlacesView(landmarks: self.landmarks, showResults: $tapped) {
                 self.tapped.toggle()
             }.animation(.spring())
@@ -106,3 +105,21 @@ struct FoodMapView: View {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

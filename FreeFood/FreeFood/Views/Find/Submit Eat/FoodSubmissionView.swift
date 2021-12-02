@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestore
+import MapKit
 
 struct FoodSubmissionView: View {
   @State var submitted = false
@@ -18,17 +19,22 @@ struct FoodSubmissionView: View {
   @State private var sizeIndex = 0
   @State private var foodError: FoodFormError?
   @State private var incomplete = false
+  @State var search = ""
+  @State var landmark: Landmark?
+  //@State var landmark: Landmark = Landmark(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D()))
+    
   var foodSizeOptions = ["A Few (1 - 5 servings)",
                          "A Decent Amount (6 - 15 servings)",
                          "We Ordered Too Much (16+ servings)"]
-  
+
   var body: some View {
     Form {
       Section(header: Text("LOCATION")) {
+          FormSearchView(search: self.$search, landmark: self.$landmark)
         TextField("Building", text: $loc)
         TextField("Room #", text: $roomNum)
       }.disableAutocorrection(true)
-      
+
       Section(header: Text("FOOD INFORMATION")) {
         TextField("Restaurant (ex. Subways)", text: $foodType)
         Picker(selection: $sizeIndex, label: Text("Food Amount")) {
@@ -37,7 +43,7 @@ struct FoodSubmissionView: View {
           }
         }
       }
-      
+
       Section(header: Text("ADDITIONAL INFO")) {
         TextEditor(text: $infoText)
           .foregroundColor(infoText == placeholderText ? .gray : .primary)
@@ -48,7 +54,7 @@ struct FoodSubmissionView: View {
             }
           }
       }
-      
+
       Section() {
         HStack {
           Button(action: {
@@ -56,26 +62,30 @@ struct FoodSubmissionView: View {
               incomplete = true
               foodError = .buildingMissing
             }
-            
+
             if roomNum == "" {
               incomplete = true
               foodError = .roomNoMissing
             }
-            
+
             if foodType == "" {
               incomplete = true
               foodError = .restaurantMissing
             }
-            
+
             infoText = (infoText == placeholderText ? "" : infoText)
-            
+
             if !incomplete {
-              storeFoodSubmission(building: loc,
-                                  roomNum: roomNum,
-                                  foodType: foodType,
-                                  quantity: foodSizeOptions[sizeIndex],
-                                  additionalInfo: infoText)
-              submitted = true
+//                guard let lm = self.landmark else {
+//                    throw MyError("FoodSubmissionView's landmark property is nil")
+//                }
+                storeFoodSubmission(landmark: landmark!,
+                                    building: loc,
+                                    roomNum: roomNum,
+                                    foodType: foodType,
+                                    quantity: foodSizeOptions[sizeIndex],
+                                    additionalInfo: infoText)
+                submitted = true
             }
           }) {
             Text("Submit")
@@ -107,13 +117,13 @@ struct FoodSubmissionView_Previews: PreviewProvider {
   }
 }
 
-func storeFoodSubmission(building: String, roomNum: String, foodType: String, quantity: String, additionalInfo: String)  {
+func storeFoodSubmission(landmark: Landmark, building: String, roomNum: String, foodType: String, quantity: String, additionalInfo: String)  {
   let sam = SimpleAuthModel()
   let db = Firestore.firestore()
   var UID = ""
   // Add a new document with a generated ID
   var ref: DocumentReference? = nil
-  
+
   if let user = sam.auth.currentUser {
     //User is signed in
     UID = user.uid
@@ -121,8 +131,12 @@ func storeFoodSubmission(building: String, roomNum: String, foodType: String, qu
     //No user is signed in
     print("<DEBUG> No user is currently signed in")
   }
-  
+
   ref = db.collection("Food Submissions").addDocument(data: [
+    "Name": landmark.name,
+    "Address": landmark.title,
+    "Latitude": landmark.coordinate.latitude,
+    "Longitude": landmark.coordinate.longitude,
     "Building": building,
     "Room #": roomNum,
     "Food Type": foodType,
