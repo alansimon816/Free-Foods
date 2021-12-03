@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseFirestore
 
 struct FoodSubmissionView: View {
-  @State var submitted = false
+  @Binding var showSubmission: Bool
   @State var loc = ""
   @State var roomNum = ""
   @State var foodType = ""
@@ -22,72 +22,75 @@ struct FoodSubmissionView: View {
                          "A Decent Amount (6 - 15 servings)",
                          "We Ordered Too Much (16+ servings)"]
   
+  public func dismiss() {
+    if !incomplete {
+      storeFoodSubmission(building: loc,
+                          roomNum: roomNum,
+                          foodType: foodType,
+                          quantity: foodSizeOptions[sizeIndex],
+                          additionalInfo: infoText)
+      showSubmission = false
+    }
+  }
+  
   var body: some View {
-    Form {
-      Section(header: Text("LOCATION")) {
-        TextField("Building", text: $loc)
-        TextField("Room #", text: $roomNum)
-      }.disableAutocorrection(true)
-      
-      Section(header: Text("FOOD INFORMATION")) {
-        TextField("Restaurant (ex. Subways)", text: $foodType)
-        Picker(selection: $sizeIndex, label: Text("Food Amount")) {
-          ForEach(0..<foodSizeOptions.count) {
-            Text(self.foodSizeOptions[$0])
+    VStack {
+      Form {
+        Section(header: Text("LOCATION")) {
+          TextField("Building", text: $loc)
+          TextField("Room #", text: $roomNum)
+        }.disableAutocorrection(true)
+        
+        Section(header: Text("FOOD INFORMATION")) {
+          TextField("Restaurant (ex. Subways)", text: $foodType)
+          Picker(selection: $sizeIndex, label: Text("Food Amount")) {
+            ForEach(self.foodSizeOptions.indices, id: \.self) {
+              Text(self.foodSizeOptions[$0])
+            }
           }
         }
-      }
-      
-      Section(header: Text("ADDITIONAL INFO")) {
-        TextEditor(text: $infoText)
-          .foregroundColor(infoText == placeholderText ? .gray : .primary)
-          .submitLabel(.done)
-          .onTapGesture {
-            if infoText == placeholderText {
-              infoText = ""
+        
+        Section(header: Text("ADDITIONAL INFO")) {
+          TextEditor(text: $infoText)
+            .foregroundColor(infoText == placeholderText ? .gray : .primary)
+            .submitLabel(.done)
+            .onTapGesture {
+              if infoText == placeholderText {
+                infoText = ""
+              }
             }
-          }
-      }
-      
-      Section() {
-        HStack {
-          Button(action: {
-            if loc == "" {
-              incomplete = true
-              foodError = .buildingMissing
+        }
+        
+        Section {
+            Button(action: {
+              if loc == "" {
+                incomplete = true
+                foodError = .buildingMissing
+              }
+              
+              if roomNum == "" {
+                incomplete = true
+                foodError = .roomNoMissing
+              }
+              
+              if foodType == "" {
+                incomplete = true
+                foodError = .restaurantMissing
+              }
+              
+              infoText = (infoText == placeholderText ? "" : infoText)
+              self.dismiss()
+            }) {
+              Text("Submit").padding(.horizontal, 10)
+            }.alert(isPresented: $incomplete) {
+              Alert(title: Text(foodError!.rawValue),
+                    message: Text("Please enter the missing information."),
+                    dismissButton: .default(Text("OK")))
             }
-            
-            if roomNum == "" {
-              incomplete = true
-              foodError = .roomNoMissing
-            }
-            
-            if foodType == "" {
-              incomplete = true
-              foodError = .restaurantMissing
-            }
-            
-            infoText = (infoText == placeholderText ? "" : infoText)
-            
-            if !incomplete {
-              storeFoodSubmission(building: loc,
-                                  roomNum: roomNum,
-                                  foodType: foodType,
-                                  quantity: foodSizeOptions[sizeIndex],
-                                  additionalInfo: infoText)
-              submitted = true
-            }
+          Button(role: .destructive, action: {
+            showSubmission = false
           }) {
-            Text("Submit")
-          }.alert(isPresented: $incomplete) {
-            Alert(title: Text(foodError!.rawValue),
-                  message: Text("Please enter the missing information."),
-                  dismissButton: .default(Text("OK")))
-          }
-          if submitted {
-            NavigationLink(destination: AppView(), isActive: $submitted) {
-              EmptyView()
-            }
+            Text("Cancel").padding(.horizontal, 10)
           }
         }
       }
@@ -103,7 +106,7 @@ enum FoodFormError: String {
 
 struct FoodSubmissionView_Previews: PreviewProvider {
   static var previews: some View {
-    FoodSubmissionView()
+    FoodSubmissionView(showSubmission: .constant(true))
   }
 }
 

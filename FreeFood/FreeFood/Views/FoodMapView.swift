@@ -77,7 +77,7 @@ struct FoodMapView: View {
                 self.tapped.toggle()
             }.animation(.spring())
             .offset(y: calcOffset())
-        }
+        }.navigationTitle("Food Map")
     }
     
     func calcOffset() -> CGFloat {
