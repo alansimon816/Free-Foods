@@ -22,9 +22,7 @@ struct RegistrationView: View {
   @State private var formError: FormError?
   
   var body: some View {
-    if showAppView {
-      AppView()
-    } else {
+    VStack {
       Form {
         Section(header: Text("USERNAME")) {
           TextField("Username", text: $username)
@@ -37,6 +35,12 @@ struct RegistrationView: View {
         Section(header: Text("FAVORITE FOODS")) {
           SelectMultipleList(selectedFoods: self.$selectedFoods)
         }
+      }
+      
+      ZStack {
+        NavigationLink(destination: AppView(), isActive: $showAppView) {
+          EmptyView()
+        }.navigationBarBackButtonHidden(true)
         Button("Submit", action: {
           if username == "" || username == "Username" {
             incomplete = true

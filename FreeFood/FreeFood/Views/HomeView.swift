@@ -72,12 +72,13 @@ struct SimpleRegisterView: View {
           .textContentType(.emailAddress)
           .keyboardType(.emailAddress)
           .autocapitalization(.none)
-          .textFieldStyle(.roundedBorder)
         ZStack(alignment: .trailing) {
           if isSecured {
             SecureField("Password", text: $password)
+              .textContentType(.none)
           } else {
             TextField("Password", text: $password)
+              .textContentType(.none)
           }
           
           Button(action: {
@@ -91,8 +92,10 @@ struct SimpleRegisterView: View {
         ZStack(alignment: .trailing) {
           if isConfirmedSecured {
             SecureField("Confirm Password", text: $repass)
+              .textContentType(.none)
           } else {
             TextField("Confirm Password", text: $repass)
+              .textContentType(.none)
           }
           
           Button(action: {
@@ -108,7 +111,10 @@ struct SimpleRegisterView: View {
       .disableAutocorrection(true)
       .frame(width: 300, height: 200, alignment: .center)
       VStack {
-          NavigationLink(destination: RegistrationView().navigationBarBackButtonHidden(true), isActive: $isRegistered) {
+        NavigationLink(destination: RegistrationView()
+                        .navigationBarBackButtonHidden(true)
+                        .navigationBarTitle(Text("Registration")),
+                       isActive: $isRegistered) {
           EmptyView()
         }
         Button(action: {
@@ -189,8 +195,8 @@ struct SimpleLoginView: View {
           .textContentType(.emailAddress)
           .keyboardType(.emailAddress)
           .autocapitalization(.none)
-          .textFieldStyle(.roundedBorder)
         ZStack(alignment: .trailing) {
+          
           if isSecured {
             SecureField("Enter Password", text: $password)
           } else {
