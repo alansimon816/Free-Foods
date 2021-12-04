@@ -33,7 +33,6 @@
 		CE823D252738AA240012427D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE823D242738AA240012427D /* Assets.xcassets */; };
 		CE823D282738AA240012427D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE823D272738AA240012427D /* Preview Assets.xcassets */; };
 		CE823D342738AAA40012427D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D332738AAA40012427D /* Model.swift */; };
-		CE823D362738AEF80012427D /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D352738AEF80012427D /* ActivityView.swift */; };
 		CE823D382738B8D50012427D /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D372738B8D50012427D /* FindView.swift */; };
 		CE823D3A2738B9170012427D /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D392738B9170012427D /* AccountView.swift */; };
 		CE823D3C2738B9390012427D /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D3B2738B9390012427D /* LeaderboardView.swift */; };
@@ -69,7 +68,6 @@
 		CE823D242738AA240012427D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE823D272738AA240012427D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE823D332738AAA40012427D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		CE823D352738AEF80012427D /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		CE823D372738B8D50012427D /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		CE823D392738B9170012427D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		CE823D3B2738B9390012427D /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 				CE3183312752F4F1008BBC6A /* LocationRequestView.swift */,
 				CE69C48027581354005148BE /* Tabs */,
 				CE69C4842758146F005148BE /* Find */,
-				CE69C48627581543005148BE /* Activity */,
 				CE69C48527581538005148BE /* Leaderboard */,
 				CE69C48327581401005148BE /* Account */,
 			);
@@ -141,7 +138,6 @@
 				CE823D392738B9170012427D /* AccountView.swift */,
 				CE823D372738B8D50012427D /* FindView.swift */,
 				CE823D3B2738B9390012427D /* LeaderboardView.swift */,
-				CE823D352738AEF80012427D /* ActivityView.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -171,13 +167,6 @@
 			children = (
 			);
 			path = Leaderboard;
-			sourceTree = "<group>";
-		};
-		CE69C48627581543005148BE /* Activity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Activity;
 			sourceTree = "<group>";
 		};
 		CE69C4892758176D005148BE /* Feed */ = {
@@ -394,7 +383,6 @@
 				CE3183342752F4F1008BBC6A /* LocationManager.swift in Sources */,
 				CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */,
 				9273F7BA2746A3820057D5EB /* HomeView.swift in Sources */,
-				CE823D362738AEF80012427D /* ActivityView.swift in Sources */,
 				CE5AFF932754315F00DC5E65 /* FoodEventView.swift in Sources */,
 				CE69C48827581643005148BE /* LocationSearchView.swift in Sources */,
 				CE5AFF912754237B00DC5E65 /* FoodFeedItemView.swift in Sources */,
