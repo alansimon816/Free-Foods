@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestore
+import MapKit
 
 struct FoodSubmissionView: View {
   @Binding var showSubmission: Bool
@@ -18,13 +19,18 @@ struct FoodSubmissionView: View {
   @State private var sizeIndex = 0
   @State private var foodError: FoodFormError?
   @State private var incomplete = false
+  @State var search = ""
+  @State var landmark: Landmark?
+  //@State var landmark: Landmark = Landmark(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D()))
+    
   var foodSizeOptions = ["A Few (1 - 5 servings)",
                          "A Decent Amount (6 - 15 servings)",
                          "We Ordered Too Much (16+ servings)"]
-  
+
   public func dismiss() {
     if !incomplete {
-      storeFoodSubmission(building: loc,
+      storeFoodSubmission(landmark: landmark!,
+                          building: loc,
                           roomNum: roomNum,
                           foodType: foodType,
                           quantity: foodSizeOptions[sizeIndex],
@@ -110,13 +116,13 @@ struct FoodSubmissionView_Previews: PreviewProvider {
   }
 }
 
-func storeFoodSubmission(building: String, roomNum: String, foodType: String, quantity: String, additionalInfo: String)  {
+func storeFoodSubmission(landmark: Landmark, building: String, roomNum: String, foodType: String, quantity: String, additionalInfo: String)  {
   let sam = SimpleAuthModel()
   let db = Firestore.firestore()
   var UID = ""
   // Add a new document with a generated ID
   var ref: DocumentReference? = nil
-  
+
   if let user = sam.auth.currentUser {
     //User is signed in
     UID = user.uid
@@ -124,8 +130,12 @@ func storeFoodSubmission(building: String, roomNum: String, foodType: String, qu
     //No user is signed in
     print("<DEBUG> No user is currently signed in")
   }
-  
+
   ref = db.collection("Food Submissions").addDocument(data: [
+    "Name": landmark.name,
+    "Address": landmark.title,
+    "Latitude": landmark.coordinate.latitude,
+    "Longitude": landmark.coordinate.longitude,
     "Building": building,
     "Room #": roomNum,
     "Food Type": foodType,
