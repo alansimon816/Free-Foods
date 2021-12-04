@@ -22,11 +22,11 @@ struct FoodSubmissionView: View {
   @State var search = ""
   @State var landmark: Landmark?
   //@State var landmark: Landmark = Landmark(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D()))
-    
+  
   var foodSizeOptions = ["A Few (1 - 5 servings)",
                          "A Decent Amount (6 - 15 servings)",
                          "We Ordered Too Much (16+ servings)"]
-
+  
   public func dismiss() {
     if !incomplete {
       storeFoodSubmission(landmark: landmark!,
@@ -43,13 +43,18 @@ struct FoodSubmissionView: View {
     VStack {
       Form {
         Section(header: Text("LOCATION")) {
-          FormSearchView(search: self.$search, landmark: self.$landmark)
-          TextField("Building", text: $loc)
+          LocationSearchView(search: $search, landmark: $landmark)
+          TextField("Building Name", text: $loc)
+            .onTapGesture() {
+              if landmark != nil && loc == "" {
+                loc = landmark!.name
+              }
+            }
           TextField("Room #", text: $roomNum)
         }.disableAutocorrection(true)
         
         Section(header: Text("FOOD INFORMATION")) {
-          TextField("Restaurant (ex. Subways)", text: $foodType)
+          TextField("Restaurant (ex. Subway)", text: $foodType)
           Picker(selection: $sizeIndex, label: Text("Food Amount")) {
             ForEach(self.foodSizeOptions.indices, id: \.self) {
               Text(self.foodSizeOptions[$0])
@@ -64,36 +69,38 @@ struct FoodSubmissionView: View {
             .onTapGesture {
               if infoText == placeholderText {
                 infoText = ""
+              } else if infoText == "" {
+                infoText = placeholderText
               }
             }
         }
         
         Section {
-            Button(action: {
-              if loc == "" {
-                incomplete = true
-                foodError = .buildingMissing
-              }
-              
-              if roomNum == "" {
-                incomplete = true
-                foodError = .roomNoMissing
-              }
-              
-              if foodType == "" {
-                incomplete = true
-                foodError = .restaurantMissing
-              }
-              
-              infoText = (infoText == placeholderText ? "" : infoText)
-              self.dismiss()
-            }) {
-              Text("Submit").padding(.horizontal, 10)
-            }.alert(isPresented: $incomplete) {
-              Alert(title: Text(foodError!.rawValue),
-                    message: Text("Please enter the missing information."),
-                    dismissButton: .default(Text("OK")))
+          Button(action: {
+            if loc == "" || landmark == nil {
+              incomplete = true
+              foodError = .buildingMissing
             }
+            
+            if roomNum == "" {
+              incomplete = true
+              foodError = .roomNoMissing
+            }
+            
+            if foodType == "" {
+              incomplete = true
+              foodError = .restaurantMissing
+            }
+            
+            infoText = (infoText == placeholderText ? "" : infoText)
+            self.dismiss()
+          }) {
+            Text("Submit").padding(.horizontal, 10)
+          }.alert(isPresented: $incomplete) {
+            Alert(title: Text(foodError!.rawValue),
+                  message: Text("Please enter the missing information."),
+                  dismissButton: .default(Text("OK")))
+          }
           Button(role: .destructive, action: {
             showSubmission = false
           }) {
@@ -123,7 +130,7 @@ func storeFoodSubmission(landmark: Landmark, building: String, roomNum: String, 
   var UID = ""
   // Add a new document with a generated ID
   var ref: DocumentReference? = nil
-
+  
   if let user = sam.auth.currentUser {
     //User is signed in
     UID = user.uid
@@ -131,7 +138,7 @@ func storeFoodSubmission(landmark: Landmark, building: String, roomNum: String, 
     //No user is signed in
     print("<DEBUG> No user is currently signed in")
   }
-
+  
   ref = db.collection("Food Submissions").addDocument(data: [
     "Name": landmark.name,
     "Address": landmark.title,
