@@ -27,7 +27,7 @@
 		CE69C46F2756F86A005148BE /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C46E2756F86A005148BE /* Landmark.swift */; };
 		CE69C4712756F8D8005148BE /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C4702756F8D8005148BE /* LandmarkAnnotation.swift */; };
 		CE69C473275707C1005148BE /* ListPlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C472275707C1005148BE /* ListPlacesView.swift */; };
-		CE69C48827581643005148BE /* FormSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C48727581643005148BE /* FormSearchView.swift */; };
+		CE69C48827581643005148BE /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69C48727581643005148BE /* LocationSearchView.swift */; };
 		CE823D212738AA1F0012427D /* FreeFoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D202738AA1F0012427D /* FreeFoodApp.swift */; };
 		CE823D232738AA1F0012427D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE823D222738AA1F0012427D /* ContentView.swift */; };
 		CE823D252738AA240012427D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE823D242738AA240012427D /* Assets.xcassets */; };
@@ -62,7 +62,7 @@
 		CE69C46E2756F86A005148BE /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 		CE69C4702756F8D8005148BE /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
 		CE69C472275707C1005148BE /* ListPlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlacesView.swift; sourceTree = "<group>"; };
-		CE69C48727581643005148BE /* FormSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSearchView.swift; sourceTree = "<group>"; };
+		CE69C48727581643005148BE /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
 		CE823D1D2738AA1F0012427D /* FreeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE823D202738AA1F0012427D /* FreeFoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeFoodApp.swift; sourceTree = "<group>"; };
 		CE823D222738AA1F0012427D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				92FA5018274309A30065E51A /* FoodSubmissionView.swift */,
-				CE69C48727581643005148BE /* FormSearchView.swift */,
+				CE69C48727581643005148BE /* LocationSearchView.swift */,
 			);
 			path = "Submit Eat";
 			sourceTree = "<group>";
@@ -396,7 +396,7 @@
 				9273F7BA2746A3820057D5EB /* HomeView.swift in Sources */,
 				CE823D362738AEF80012427D /* ActivityView.swift in Sources */,
 				CE5AFF932754315F00DC5E65 /* FoodEventView.swift in Sources */,
-				CE69C48827581643005148BE /* FormSearchView.swift in Sources */,
+				CE69C48827581643005148BE /* LocationSearchView.swift in Sources */,
 				CE5AFF912754237B00DC5E65 /* FoodFeedItemView.swift in Sources */,
 				CE69C44B2755C5AC005148BE /* SubmissionHistoryView.swift in Sources */,
 			);

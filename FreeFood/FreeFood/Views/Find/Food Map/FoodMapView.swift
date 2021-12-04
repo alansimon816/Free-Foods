@@ -38,9 +38,10 @@ struct MapView: UIViewRepresentable {
     map.showsUserLocation = true
     map.delegate = context.coordinator //coordinator processes functions for the map view
     
-    let region = MKCoordinateRegion(
-      center: CLLocationCoordinate2D(latitude: 38.9875, longitude: -76.9393),
-      span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+    let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 38.9875,
+                                                                   longitude: -76.9393),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.005,
+                                                           longitudeDelta: 0.005))
     map.setRegion(region, animated: true)
     
     return map
@@ -54,7 +55,8 @@ struct MapView: UIViewRepresentable {
     //updateAnnotations(from: uiView)
   }
   
-  // Need to create a separate property in the MapView struct for Food Submission landmarks and then update the map with those landmarks in this method
+  // Need to create a separate property in the MapView struct for Food Submission landmarks
+  // and then update the map with those landmarks in this method
   private func updateAnnotations(from mapView: MKMapView) {
     mapView.removeAnnotations(mapView.annotations)
     let annotations = self.landmarks.map(LandmarkAnnotation.init)
@@ -97,13 +99,18 @@ struct FoodMapView: View {
   private func getNearByLandmarks() {
     let request = MKLocalSearch.Request()
     request.naturalLanguageQuery = search
-    
+    request.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 38.9875,
+                                                                       longitude: -76.9393),
+                                        span: MKCoordinateSpan(latitudeDelta: 0.005,
+                                                               longitudeDelta: 0.005))
     let search = MKLocalSearch(request: request)
     search.start { (response, error) in
       if let response = response {
-        let mapItems = response.mapItems
+        let mapItems = response.mapItems.filter {
+          $0.placemark.locality == "College Park"
+        }
         self.landmarks = mapItems.map {
-          Landmark(placemark: $0.placemark)
+          return Landmark(placemark: $0.placemark)
         }
       }
     }
