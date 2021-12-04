@@ -43,6 +43,7 @@ struct FoodSubmissionView: View {
     VStack {
       Form {
         Section(header: Text("LOCATION")) {
+          FormSearchView(search: self.$search, landmark: self.$landmark)
           TextField("Building", text: $loc)
           TextField("Room #", text: $roomNum)
         }.disableAutocorrection(true)
