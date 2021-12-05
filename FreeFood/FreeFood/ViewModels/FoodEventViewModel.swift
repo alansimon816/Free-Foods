@@ -15,7 +15,8 @@ class FoodEventViewModel: ObservableObject {
   private var db = Firestore.firestore()
   
   func fetchData() {
-    db.collection("Food Submissions").addSnapshotListener { (querySnapshot, error) in
+    let ref = db.collection("Food Submissions").order(by: "dateCreated", descending: true)
+    ref.addSnapshotListener { (querySnapshot, error) in
       guard let documents = querySnapshot?.documents else {
         print("No documents")
         return

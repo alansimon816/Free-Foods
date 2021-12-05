@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 import MapKit
 
 struct FoodSubmissionView: View {
+  @ObservedObject var viewModel = FoodEventViewModel()
   @Binding var showSubmission: Bool
   @State var loc = ""
   @State var roomNum = ""
@@ -36,6 +37,7 @@ struct FoodSubmissionView: View {
                           foodType: foodType,
                           quantity: foodSizeOptions[sizeIndex],
                           additionalInfo: infoText)
+      viewModel.fetchData()
       showSubmission = false
     }
   }
