@@ -40,7 +40,8 @@ struct FoodSubmissionView: View {
     }
   }
   
-  public func storeFoodSubmission(landmark: Landmark, building: String, roomNum: String, foodType: String, quantity: String, additionalInfo: String)  {
+  public func storeFoodSubmission(landmark: Landmark, building: String, roomNum: String,
+                                  foodType: String, quantity: String, additionalInfo: String)  {
     let sam = SimpleAuthModel()
     let db = Firestore.firestore()
     let udm = UserDataModel()
@@ -54,34 +55,24 @@ struct FoodSubmissionView: View {
     } else {
       //No user is signed in
       print("<DEBUG> No user is currently signed in")
+      return
     }
     
     udm.fetchUsername(UID: UID, callback: { (resultString) in
-      let landmarkInfo = landmark.createPlace()
       ref = db.collection("Food Submissions").document()
+      
       let docID = ref!.documentID
+      let date = Date.now
+      let event = FoodEvent(docID: docID, date: date, adtlInfo: additionalInfo, building: building,
+                            type: foodType, quantity: quantity, roomNo: roomNum,
+                            UID: UID, username: resultString, landmarkID: landmark.id,
+                            name: landmark.name, address: landmark.title, coord: landmark.coordinate)
       
       do {
-        try db.collection("Food Submissions").document(docID).setData(from: landmarkInfo)
+        try db.collection("Food Submissions").document(docID).setData(from: event)
       } catch let error {
         print("Error writing to Firestore: \(error)")
       }
-      
-      db.collection("Food Submissions").document(docID).setData([
-        "Building": building,
-        "Room #": roomNum,
-        "Food Type": foodType,
-        "Quantity:": quantity,
-        "Additional Info": additionalInfo,
-        "Date created": Date.now,
-        "UID": UID,
-        "User": resultString], merge: true) { err in
-          if let err = err {
-            print("Error adding document: \(err)")
-          } else {
-            print("Document added with ID: \(ref!.documentID)")
-          }
-        }
     })
   }
 
