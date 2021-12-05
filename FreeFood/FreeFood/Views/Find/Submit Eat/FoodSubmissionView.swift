@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 import MapKit
 
 struct FoodSubmissionView: View {
@@ -21,7 +22,7 @@ struct FoodSubmissionView: View {
   @State private var incomplete = false
   @State var search = ""
   @State var landmark: Landmark?
-  //@State var landmark: Landmark = Landmark(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D()))
+  var username: String = ""
   
   var foodSizeOptions = ["A Few (1 - 5 servings)",
                          "A Decent Amount (6 - 15 servings)",
@@ -39,6 +40,51 @@ struct FoodSubmissionView: View {
     }
   }
   
+  public func storeFoodSubmission(landmark: Landmark, building: String, roomNum: String, foodType: String, quantity: String, additionalInfo: String)  {
+    let sam = SimpleAuthModel()
+    let db = Firestore.firestore()
+    let udm = UserDataModel()
+    var UID = ""
+    // Add a new document with a generated ID
+    var ref: DocumentReference? = nil
+    
+    if let user = sam.auth.currentUser {
+      //User is signed in
+      UID = user.uid
+    } else {
+      //No user is signed in
+      print("<DEBUG> No user is currently signed in")
+    }
+    
+    udm.fetchUsername(UID: UID, callback: { (resultString) in
+      let landmarkInfo = landmark.createPlace()
+      ref = db.collection("Food Submissions").document()
+      let docID = ref!.documentID
+      
+      do {
+        try db.collection("Food Submissions").document(docID).setData(from: landmarkInfo)
+      } catch let error {
+        print("Error writing to Firestore: \(error)")
+      }
+      
+      db.collection("Food Submissions").document(docID).setData([
+        "Building": building,
+        "Room #": roomNum,
+        "Food Type": foodType,
+        "Quantity:": quantity,
+        "Additional Info": additionalInfo,
+        "Date created": Date.now,
+        "UID": UID,
+        "User": resultString], merge: true) { err in
+          if let err = err {
+            print("Error adding document: \(err)")
+          } else {
+            print("Document added with ID: \(ref!.documentID)")
+          }
+        }
+    })
+  }
+
   var body: some View {
     VStack {
       Form {
@@ -121,40 +167,5 @@ enum FoodFormError: String {
 struct FoodSubmissionView_Previews: PreviewProvider {
   static var previews: some View {
     FoodSubmissionView(showSubmission: .constant(true))
-  }
-}
-
-func storeFoodSubmission(landmark: Landmark, building: String, roomNum: String, foodType: String, quantity: String, additionalInfo: String)  {
-  let sam = SimpleAuthModel()
-  let db = Firestore.firestore()
-  var UID = ""
-  // Add a new document with a generated ID
-  var ref: DocumentReference? = nil
-  
-  if let user = sam.auth.currentUser {
-    //User is signed in
-    UID = user.uid
-  } else {
-    //No user is signed in
-    print("<DEBUG> No user is currently signed in")
-  }
-  
-  ref = db.collection("Food Submissions").addDocument(data: [
-    "Name": landmark.name,
-    "Address": landmark.title,
-    "Latitude": landmark.coordinate.latitude,
-    "Longitude": landmark.coordinate.longitude,
-    "Building": building,
-    "Room #": roomNum,
-    "Food Type": foodType,
-    "Quantity:": quantity,
-    "Additional Info": additionalInfo,
-    "UID": UID])
-  { err in
-    if let err = err {
-      print("Error adding document: \(err)")
-    } else {
-      print("Document added with ID: \(ref!.documentID)")
-    }
   }
 }

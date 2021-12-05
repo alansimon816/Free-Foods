@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92406BFE275CA0F30050F5A8 /* DataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92406BFD275CA0F20050F5A8 /* DataFetch.swift */; };
 		924A80122745AEC100E6BF9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 924A80112745AEC100E6BF9C /* GoogleService-Info.plist */; };
 		9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9261E6A22745B6AD0099BE59 /* SignInModel.swift */; };
 		9273F7BA2746A3820057D5EB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F7B92746A3820057D5EB /* HomeView.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		2D1DC5A00A7D2847C824380D /* Pods_FreeFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92406BFD275CA0F20050F5A8 /* DataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetch.swift; sourceTree = "<group>"; };
 		924A80112745AEC100E6BF9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9261E6A22745B6AD0099BE59 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		9273F7B92746A3820057D5EB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -104,6 +106,7 @@
 				CE5AFF892754224000DC5E65 /* FoodEventModel.swift */,
 				CE69C46E2756F86A005148BE /* Landmark.swift */,
 				CE69C4702756F8D8005148BE /* LandmarkAnnotation.swift */,
+				92406BFD275CA0F20050F5A8 /* DataFetch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				CE823D232738AA1F0012427D /* ContentView.swift in Sources */,
 				CE823D40274F1A990012427D /* RegistrationView.swift in Sources */,
 				CE3183332752F4F1008BBC6A /* LocationRequestView.swift in Sources */,
+				92406BFE275CA0F30050F5A8 /* DataFetch.swift in Sources */,
 				CE823D382738B8D50012427D /* FindView.swift in Sources */,
 				CE69C46D2756ED76005148BE /* FoodMapView.swift in Sources */,
 				9273F7BC274831600057D5EB /* AppView.swift in Sources */,
