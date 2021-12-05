@@ -75,7 +75,7 @@ struct RegistrationView: View {
     let db = Firestore.firestore()
     var UID = ""
     // Add a new document with a generated ID
-    var ref: DocumentReference? = nil
+    //var ref: DocumentReference? = nil
     
     if let user = sam.auth.currentUser {
       //User is signed in
@@ -85,19 +85,13 @@ struct RegistrationView: View {
       print("<DEBUG> No user is currently signed in")
     }
     
-    ref = db.collection("users").addDocument(data: [
+      db.collection("users").document(UID).setData([
       "Username": username,
       "First Name": firstName,
       "Last Name": lastName,
       "Favorite Food Types": favFoods,
       "UID": UID
-    ]) { err in
-      if let err = err {
-        print("Error adding document: \(err)")
-      } else {
-        print("Document added with ID: \(ref!.documentID)")
-      }
-    }
+    ])
   }
 }
 
