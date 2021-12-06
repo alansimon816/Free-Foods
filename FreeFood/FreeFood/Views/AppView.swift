@@ -15,14 +15,10 @@ struct AppView: View {
       FindView()
         .tabItem {Label("Find Eats", systemImage: "magnifyingglass")}
         .tag(1)
-      LeaderboardView()
-        .navigationBarHidden(true)
-        .tabItem {Label("Leaderboard", systemImage: "chart.bar.xaxis")}
-        .tag(2)
       AccountView()
         .navigationBarHidden(true)
         .tabItem {Label("Settings", systemImage: "person.crop.circle")}
-        .tag(3)
+        .tag(2)
     }
     .navigationBarBackButtonHidden(true)
     .onAppear {
