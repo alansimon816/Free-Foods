@@ -13,6 +13,7 @@ struct FreeFoodApp: App {
   @StateObject var model = Model()
   @StateObject var sam = SimpleAuthModel()
   @StateObject var lm = LocationManager()
+  @StateObject var vm = FoodEventViewModel()
   
   init() {
     FirebaseApp.configure()
@@ -24,6 +25,7 @@ struct FreeFoodApp: App {
         .environmentObject(sam)
         .environmentObject(model)
         .environmentObject(lm)
+        .environmentObject(vm)
     }
   }
 }
