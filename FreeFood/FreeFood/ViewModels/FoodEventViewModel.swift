@@ -6,13 +6,14 @@
 //
 import Foundation
 import FirebaseFirestore
+import CoreLocation
 
 // Holds a collection of Food Events
 class FoodEventViewModel: ObservableObject {
-  var events = [FoodEvent?]()
   @Published var foodEvents = [FoodEvent]()
-  
+  @Published var eventLocations = [CLLocationCoordinate2D]()
   private var db = Firestore.firestore()
+  var events = [FoodEvent?]()
   
   func fetchData() {
     let ref = db.collection("Food Submissions").order(by: "dateCreated", descending: true)
@@ -30,4 +31,12 @@ class FoodEventViewModel: ObservableObject {
     foodEvents = events.compactMap { $0 }
   }
   
+  func getLocations() {
+    fetchData()
+    for event in foodEvents {
+      let coord = CLLocationCoordinate2D(latitude: event.latitude,
+                                         longitude: event.longitude)
+      eventLocations.append(coord)
+    }
+  }
 }

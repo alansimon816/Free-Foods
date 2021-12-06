@@ -12,6 +12,7 @@
 		9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9261E6A22745B6AD0099BE59 /* SignInModel.swift */; };
 		9273F7BA2746A3820057D5EB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F7B92746A3820057D5EB /* HomeView.swift */; };
 		9273F7BC274831600057D5EB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F7BB274831600057D5EB /* AppView.swift */; };
+		92EDF6DA275D8913003EFC08 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EDF6D9275D8912003EFC08 /* UserDetailView.swift */; };
 		92FA5019274309A30065E51A /* FoodSubmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA5018274309A30065E51A /* FoodSubmissionView.swift */; };
 		C34106CD3BF8EA15A3CB4DFF /* Pods_FreeFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1DC5A00A7D2847C824380D /* Pods_FreeFood.framework */; };
 		CE3183332752F4F1008BBC6A /* LocationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3183312752F4F1008BBC6A /* LocationRequestView.swift */; };
@@ -47,6 +48,7 @@
 		9261E6A22745B6AD0099BE59 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		9273F7B92746A3820057D5EB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9273F7BB274831600057D5EB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		92EDF6D9275D8912003EFC08 /* UserDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		92FA5018274309A30065E51A /* FoodSubmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSubmissionView.swift; sourceTree = "<group>"; };
 		C542F32A5345FAE68BDA39A8 /* Pods-FreeFood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeFood.debug.xcconfig"; path = "Target Support Files/Pods-FreeFood/Pods-FreeFood.debug.xcconfig"; sourceTree = "<group>"; };
 		CE3183312752F4F1008BBC6A /* LocationRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		CE69C4892758176D005148BE /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				92EDF6D9275D8912003EFC08 /* UserDetailView.swift */,
 				CE5AFF8E2754234A00DC5E65 /* FoodFeedView.swift */,
 				CE5AFF902754237B00DC5E65 /* FoodFeedItemView.swift */,
 				CE5AFF922754315F00DC5E65 /* FoodEventView.swift */,
@@ -368,6 +371,7 @@
 				9261E6A32745B6AD0099BE59 /* SignInModel.swift in Sources */,
 				CE823D342738AAA40012427D /* Model.swift in Sources */,
 				CE69C46B2756BBA4005148BE /* AboutView.swift in Sources */,
+				92EDF6DA275D8913003EFC08 /* UserDetailView.swift in Sources */,
 				CE823D232738AA1F0012427D /* ContentView.swift in Sources */,
 				CE823D40274F1A990012427D /* RegistrationView.swift in Sources */,
 				CE3183332752F4F1008BBC6A /* LocationRequestView.swift in Sources */,
