@@ -12,6 +12,7 @@ import Firebase
 struct FreeFoodApp: App {
   @StateObject var model = Model()
   @StateObject var sam = SimpleAuthModel()
+  @StateObject var lm = LocationManager()
   
   init() {
     FirebaseApp.configure()
@@ -22,6 +23,7 @@ struct FreeFoodApp: App {
       ContentView()
         .environmentObject(sam)
         .environmentObject(model)
+        .environmentObject(lm)
     }
   }
 }
