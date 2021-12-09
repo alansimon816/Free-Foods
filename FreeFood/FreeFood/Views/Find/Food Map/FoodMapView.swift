@@ -12,21 +12,19 @@ import MapKit
 struct MapView: View {
   @ObservedObject var lm = LocationManager()
   @ObservedObject var vm = FoodEventViewModel()
-  
-  init() {
-    vm.getLocations()
-  }
+  @State var showInfo = false
   
   var body: some View {
     Map(coordinateRegion: $lm.region,
         interactionModes: .all,
-        showsUserLocation: true,
+        showsUserLocation: false,
         userTrackingMode: .constant(.follow),
-        annotationItems: vm.eventLocations) {
-      MapAnnotation(coordinate: $0) {
-        Circle()
-          .size(CGSize(width: 15, height: 15))
-          .fill(Color.red)
+        annotationItems: vm.foodEvents) { event in
+      MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: event.latitude,
+                                                       longitude: event.longitude)) {
+          Image(systemName: "mappin.square.fill")
+            .foregroundColor(Color("BlueSapphire"))
+            .frame(width: 15, height: 15)
       }
     }
   }
@@ -38,7 +36,9 @@ struct FoodMapView: View {
   
   var body: some View {
     ZStack(alignment: .top) {
-      MapView()
+      MapView().onAppear {
+        viewModel.getEvents()
+      }
     }.navigationTitle("Food Map")
   }
 }

@@ -7,7 +7,6 @@
 import SwiftUI
 
 struct FindView: View {
-
   @State var showSheet = false
   @State var showMap = false
   var body: some View {

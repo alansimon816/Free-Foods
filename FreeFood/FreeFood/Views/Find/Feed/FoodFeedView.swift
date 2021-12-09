@@ -16,7 +16,7 @@ struct FoodFeedView: View {
       }
     }
     .onAppear() {
-      self.viewModel.fetchData()
+      viewModel.getEvents()
     }
   }
 }

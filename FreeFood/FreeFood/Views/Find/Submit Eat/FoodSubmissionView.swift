@@ -37,7 +37,6 @@ struct FoodSubmissionView: View {
                           foodType: foodType,
                           quantity: foodSizeOptions[sizeIndex],
                           additionalInfo: infoText)
-      viewModel.fetchData()
       showSubmission = false
     }
   }
