@@ -11,11 +11,13 @@ import CoreLocation
 // Holds a collection of Food Events
 class FoodEventViewModel: ObservableObject {
   @Published var foodEvents = [FoodEvent]()
-  @Published var eventLocations = [CLLocationCoordinate2D]()
   private var db = Firestore.firestore()
-  var events = [FoodEvent?]()
   
-  func fetchData() {
+  init() {
+    getEvents()
+  }
+  
+  func fetchData(callback: @escaping([FoodEvent]) -> Void ) {
     let ref = db.collection("Food Submissions").order(by: "dateCreated", descending: true)
     ref.addSnapshotListener { (querySnapshot, error) in
       guard let documents = querySnapshot?.documents else {
@@ -23,20 +25,16 @@ class FoodEventViewModel: ObservableObject {
         return
       }
       
-      self.events = documents.map { (queryDocumentSnapshot) -> FoodEvent? in
+      callback(documents.map { (queryDocumentSnapshot) -> FoodEvent? in
         let event = try? queryDocumentSnapshot.data(as: FoodEvent.self)
         return event
-      }
+      }.compactMap { $0 })
     }
-    foodEvents = events.compactMap { $0 }
   }
   
-  func getLocations() {
-    fetchData()
-    for event in foodEvents {
-      let coord = CLLocationCoordinate2D(latitude: event.latitude,
-                                         longitude: event.longitude)
-      eventLocations.append(coord)
-    }
+  func getEvents() {
+    fetchData(callback: { foodEvents in
+      self.foodEvents = foodEvents
+    })
   }
 }

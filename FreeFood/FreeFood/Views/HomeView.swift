@@ -174,7 +174,7 @@ struct SimpleRegisterView: View {
           }))
         }
       }
-    }
+    }.navigationBarTitle(Text("Sign Up"))
   }
 }
 
@@ -257,7 +257,7 @@ struct SimpleLoginView: View {
           }))
         }
       }
-    }
+    }.navigationBarTitle(Text("Sign In"))
   }
 }
 

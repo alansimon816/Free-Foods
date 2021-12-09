@@ -11,8 +11,8 @@ import MapKit
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
   @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 38.9875,
                                                                                    longitude: -76.9393),
-                                                    span: MKCoordinateSpan(latitudeDelta: 0.005,
-                                                                           longitudeDelta: 0.005))
+                                                    span: MKCoordinateSpan(latitudeDelta: 0.01 ,
+                                                                           longitudeDelta: 0.01))
   @Published var userLocation: CLLocation? = nil
   private let lm = CLLocationManager()
   static let shared = LocationManager() // Accessible anywhere in app
